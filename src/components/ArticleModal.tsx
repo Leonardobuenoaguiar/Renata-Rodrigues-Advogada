@@ -43,7 +43,7 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
           autoFocus
           onClick={onClose}
           aria-label="Fechar artigo"
-          className="flex h-10 w-10 shrink-0 items-center justify-center text-ink transition-colors duration-300 hover:text-sage-deep"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-ink transition-colors duration-300 hover:text-sage-deep focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage-deep [-webkit-tap-highlight-color:transparent]"
         >
           <Close className="h-4 w-4" />
         </button>
