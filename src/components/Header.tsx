@@ -187,7 +187,7 @@ export default function Header() {
             aria-label="Abrir menu"
             aria-expanded={open}
             aria-haspopup="dialog"
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-cream/50 bg-cream/10 text-cream shadow-[0_3px_10px_rgba(20,27,23,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-cream hover:text-ink hover:shadow-[0_5px_15px_rgba(20,27,23,0.28)] xl:hidden"
+            className="flex h-11 w-11 items-center justify-center text-cream transition-all duration-300 hover:-translate-y-0.5 hover:opacity-70 xl:hidden"
           >
             <Menu className="h-5 w-5" />
           </button>
@@ -215,7 +215,7 @@ export default function Header() {
               onClick={() => setOpen(false)}
               aria-label="Fechar menu"
               autoFocus
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/40 text-ink shadow-[0_3px_10px_rgba(37,39,34,0.10)] transition-all duration-300 hover:bg-cream"
+              className="flex h-11 w-11 items-center justify-center text-ink transition-all duration-300 hover:-translate-y-0.5 hover:opacity-70"
             >
               <Close className="h-5 w-5" />
             </button>
