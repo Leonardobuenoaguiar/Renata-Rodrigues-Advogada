@@ -1,6 +1,3 @@
-const leftFlourish = "/about-flourish-left.png";
-const rightFlourish = "/about-flourish.png";
-
 const paragraphs = [
   <>
     Renata Rodrigues de Souza é advogada e consultora jurídica educacional, com
@@ -96,33 +93,6 @@ export default function About() {
           max-width: 887px;
           margin: 0 auto;
           padding: 0 24px;
-        }
-
-        /* Ornamentos botânicos */
-        .sobre-decor {
-          position: absolute;
-          z-index: 1;
-          opacity: 0.5;
-          pointer-events: none;
-          user-select: none;
-        }
-
-        .sobre-decor img {
-          display: block;
-          width: 100%;
-          height: auto;
-        }
-
-        .sobre-decor-left {
-          top: 180px;
-          left: max(-12px, calc(50% - 567px));
-          width: 138px;
-        }
-
-        .sobre-decor-right {
-          right: max(-12px, calc(50% - 566px));
-          bottom: -8px;
-          width: 230px;
         }
 
         /* Título */
@@ -322,40 +292,14 @@ export default function About() {
             line-height: 1.5;
             letter-spacing: 0.13em;
           }
-
-          .sobre-decor {
-            width: 155px;
-            opacity: 0.5;
-          }
-
-          .sobre-decor-left {
-            display: block;
-            top: 170px;
-            left: -58px;
-            bottom: auto;
-            clip-path: inset(0 0 72px 0);
-          }
-
-          .sobre-decor-right {
-            right: -18px;
-            bottom: -40px;
-          }
         }
       `}</style>
-
-      {/* Ornamentações botânicas */}
-      <div className="sobre-decor sobre-decor-left" aria-hidden="true">
-        <img src={leftFlourish} alt="" />
-      </div>
-
-      <div className="sobre-decor sobre-decor-right" aria-hidden="true">
-        <img src={rightFlourish} alt="" />
-      </div>
 
       <div className="sobre-container">
         {/* Título */}
         <div className="sobre-heading">
           <p className="sobre-eyebrow">Sobre Renata</p>
+
           <h2 className="sobre-title">
             Autoridade jurídica com olhar de gestão
           </h2>
@@ -386,6 +330,7 @@ export default function About() {
             ))}
 
             <p className="font-hist sobre-sign">Renata Rodrigues de Souza</p>
+
             <p className="sobre-role">
               Advogada e consultora jurídica educacional
             </p>
