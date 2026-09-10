@@ -1,0 +1,110 @@
+import { useState } from "react";
+import Section, { SectionHeading } from "./Section";
+import Reveal from "./Reveal";
+
+const areas = [
+  { t: "Direito Educacional", d: "A base jurídica que sustenta a rotina das instituições de ensino." },
+  { t: "Compliance Educacional", d: "Alinhamento contínuo a normas, regulamentos e boas práticas." },
+  { t: "Prevenção da Judicialização", d: "Antecipar riscos e evitar que situações se tornem processos." },
+  { t: "Gestão de Riscos", d: "Identificar, avaliar e tratar vulnerabilidades antes que cresçam." },
+  { t: "Governança", d: "Estruturas decisórias, responsabilidades e processos bem definidos." },
+  { t: "Auditoria e Controles", d: "Revisão de processos, documentos e práticas internas." },
+  { t: "LGPD e Proteção de Dados", d: "Conformidade e tratamento adequado de dados de alunos e equipes." },
+  { t: "Bullying e Cyberbullying", d: "Protocolos de prevenção, responsabilização e acolhimento." },
+  { t: "Inclusão e Educação Especial", d: "Apoio jurídico ao PEI, PAEE e à acessibilidade." },
+  { t: "Mediação e Gestão de Conflitos", d: "Condução segura de situações sensíveis e delicadas." },
+  { t: "ECA Digital", d: "Proteção da infância e da juventude no ambiente on-line." },
+  { t: "Orientação a Gestores", d: "Suporte preventivo para decisões diárias da gestão escolar." },
+];
+
+export default function Atuacao() {
+  // item aberto: 0 = primeiro aberto por padrão (use null para todos fechados)
+  const [aberto, setAberto] = useState<number | null>(0);
+
+  return (
+    <Section id="atuacao" className="py-20 lg:py-28">
+      <div className="grid gap-6 lg:grid-cols-12">
+        <div className="lg:col-span-4">
+          <SectionHeading
+            eyebrow="Atuação"
+            title={
+              <>
+                Um leque completo para a{" "}
+                <span className="text-brand-dark">gestão educacional</span>
+              </>
+            }
+          />
+          <Reveal delay={150}>
+            <p className="mt-6 max-w-md text-base leading-[1.8] text-ink-soft">
+              Do jurídico ao compliance, da proteção de dados à condução de
+              situações sensíveis, uma atuação ampla e integrada para proteger
+              escolas, gestores, equipes e alunos.
+            </p>
+            <p className="mt-4 font-hist text-lg text-sage-deep">
+              Uma só parceira. Visão de 360°.
+            </p>
+          </Reveal>
+        </div>
+
+        <div className="mt-2 grid gap-x-12 sm:grid-cols-2 lg:col-span-8">
+          {areas.map((a, i) => {
+            const isOpen = aberto === i;
+            return (
+              <Reveal
+                key={a.t}
+                delay={(i % 4) * 80}
+                className="border-b border-line first:pt-1"
+              >
+                {/* Nome da atuação — clicável, abre a explicação abaixo */}
+                <button
+                  type="button"
+                  onClick={() => setAberto(isOpen ? null : i)}
+                  aria-expanded={isOpen}
+                  className="group flex w-full items-start gap-4 py-5 text-left"
+                >
+                  <span className="font-hist mt-0.5 text-sm text-brand-dark">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="flex-1 text-base font-semibold tracking-tight text-ink transition-colors group-hover:text-brand-dark">
+                    {a.t}
+                  </span>
+                  {/* ícone + (vira × quando aberto) */}
+                  <span
+                    className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-line text-brand-dark transition-transform duration-300 ${
+                      isOpen ? "rotate-45" : ""
+                    }`}
+                    aria-hidden="true"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      className="h-3.5 w-3.5"
+                    >
+                      <path d="M12 5v14M5 12h14" />
+                    </svg>
+                  </span>
+                </button>
+
+                {/* Área que abre abaixo, explicando a atuação */}
+                <div
+                  className={`grid transition-all duration-300 ease-out ${
+                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <p className="pb-5 pl-9 pr-8 text-[15px] leading-[1.8] text-ink-soft">
+                      {a.d}
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+      </div>
+    </Section>
+  );
+}
