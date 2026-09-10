@@ -187,7 +187,7 @@ export default function Header() {
             aria-label="Abrir menu"
             aria-expanded={open}
             aria-haspopup="dialog"
-            className="flex h-11 w-11 items-center justify-center text-cream transition-all duration-300 hover:-translate-y-0.5 hover:opacity-70 xl:hidden"
+            className="flex h-11 w-11 items-center justify-center text-cream transition-all duration-300 hover:-translate-y-0.5 hover:opacity-70 focus:outline-none focus-visible:opacity-60 [-webkit-tap-highlight-color:transparent] xl:hidden"
           >
             <Menu className="h-5 w-5" />
           </button>
@@ -215,7 +215,7 @@ export default function Header() {
               onClick={() => setOpen(false)}
               aria-label="Fechar menu"
               autoFocus
-              className="flex h-11 w-11 items-center justify-center text-ink transition-all duration-300 hover:-translate-y-0.5 hover:opacity-70"
+              className="flex h-11 w-11 items-center justify-center text-ink transition-all duration-300 hover:-translate-y-0.5 hover:opacity-70 focus:outline-none focus-visible:opacity-60 [-webkit-tap-highlight-color:transparent]"
             >
               <Close className="h-5 w-5" />
             </button>

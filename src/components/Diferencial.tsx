@@ -79,8 +79,8 @@ export default function Diferencial() {
         <Reveal>
           <div className="max-w-sm lg:max-w-[12.5rem]">
             <h2 className="font-cinzel text-3xl leading-[1.1] tracking-tight text-ink lg:text-[2rem]">
-              Nossos
-              <span className="block text-ink">diferenciais</span>
+              Nosso
+              <span className="block text-ink">diferencial</span>
             </h2>
           </div>
         </Reveal>
