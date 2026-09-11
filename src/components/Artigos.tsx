@@ -261,13 +261,20 @@ export default function Artigos() {
         {/* Cabeçalho */}
         <Reveal>
           <div className="flex flex-col items-center text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[#c3a398]/50 bg-cream/70 px-3.5 py-1 font-hist text-[12px] tracking-[0.04em] text-[#9c7a70]">
-              <InstagramGlyph className="h-3 w-3" />
-              {INSTAGRAM_HANDLE}
+            {/* Pílula do handle — texto em degradê rosé marrom
+                (o glifo fica com cor fixa pra não sumir com o text-transparent) */}
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#c3a398]/50 bg-cream/70 px-3.5 py-1 font-hist text-[12px] tracking-[0.04em]">
+              <InstagramGlyph className="h-3 w-3 text-[#9c7a70]" />
+              <span className="bg-gradient-to-r from-[#9c7a70] to-[#C97B76] bg-clip-text text-transparent">
+                {INSTAGRAM_HANDLE}
+              </span>
             </span>
 
             <h2 className="mt-3.5 font-cinzel text-2xl leading-tight tracking-tight text-ink sm:text-3xl lg:text-[2rem]">
-              Destaques do <span className="text-[#9c7a70]">Instagram</span>
+              Destaques do{" "}
+              <span className="bg-gradient-to-r from-[#9c7a70] to-[#C97B76] bg-clip-text text-transparent">
+                Instagram
+              </span>
             </h2>
 
             <span className="mx-auto mt-3.5 block h-px w-10 bg-[#c3a398]" />

@@ -121,14 +121,17 @@ export default function Atuacao() {
       </div>
 
       <div className="relative">
-        {/* Texto grande em cima, centralizado */}
-        <div className="mx-auto max-w-2xl text-center">
+        {/* Texto grande em cima, centralizado
+            (eyebrow "Atuação" em degradê rosé marrom via [&_.eyebrow]) */}
+        <div className="mx-auto max-w-2xl text-center [&_.eyebrow]:bg-gradient-to-r [&_.eyebrow]:from-[#9c7a70] [&_.eyebrow]:to-[#C97B76] [&_.eyebrow]:bg-clip-text [&_.eyebrow]:text-transparent">
           <SectionHeading
             eyebrow="Atuação"
             title={
               <>
                 Um leque completo para a{" "}
-                <span className="text-brand-dark">gestão jurídica educacional</span>
+                <span className="bg-gradient-to-r from-[#9c7a70] to-[#C97B76] bg-clip-text text-transparent">
+                  gestão jurídica educacional
+                </span>
               </>
             }
           />

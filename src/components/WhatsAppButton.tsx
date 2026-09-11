@@ -8,7 +8,7 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Falar com Renata pelo WhatsApp"
-      className="group fixed right-5 bottom-[max(1.25rem,env(safe-area-inset-bottom))] z-40 rounded-full border border-cream bg-sage text-ink shadow-[0_4px_18px_rgba(37,39,34,0.16)] transition-colors hover:bg-sage-deep hover:text-white sm:right-7 sm:bottom-7"
+      className="group fixed right-5 bottom-[max(1.25rem,env(safe-area-inset-bottom))] z-40 rounded-full border border-cream bg-[#E69B97] text-ink shadow-[0_4px_18px_rgba(37,39,34,0.16)] transition-colors hover:bg-[#C97B76] hover:text-white sm:right-7 sm:bottom-7"
     >
       <span className="flex h-14 w-14 items-center justify-center">
         <WhatsApp className="h-7 w-7" />

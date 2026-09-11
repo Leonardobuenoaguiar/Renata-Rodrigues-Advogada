@@ -57,18 +57,21 @@ export default function Servicos() {
       tone="paper"
       className="relative overflow-hidden py-12 lg:py-16"
     >
-      <div className="relative">
-        <SectionHeading
-          eyebrow="Serviços"
-          align="center"
-          title={
-            <>
-              Soluções sob medida para a{" "}
-              <span className="text-brand-dark">rotina escolar</span>
-            </>
-          }
+<div className="relative [&_.eyebrow]:bg-gradient-to-r [&_.eyebrow]:from-[#9c7a70] [&_.eyebrow]:to-[#C97B76] [&_.eyebrow]:bg-clip-text [&_.eyebrow]:text-transparent">
+  <SectionHeading
+    eyebrow="Serviços"
+    align="center"
+    title={
+      <>
+        Soluções sob medida para a{" "}
+        <span className="bg-gradient-to-r from-[#9c7a70] to-[#C97B76] bg-clip-text text-transparent">
+          rotina escolar
+        </span>
+      </>
+    }
           description="Serviços preventivos e estratégicos para que a instituição de ensino tome decisões seguras em cada etapa da gestão."
         />
+
 
         <div className="mx-auto mt-14 grid max-w-6xl gap-x-10 gap-y-14 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-x-14 lg:gap-y-16">
           {services.map((s, i) => (

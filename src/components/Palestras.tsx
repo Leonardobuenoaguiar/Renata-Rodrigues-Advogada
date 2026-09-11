@@ -8,10 +8,14 @@ import { ArrowRight } from "./icons";
    ROSE       #c3a398  → tom principal (decoração, bordas, traços)
    ROSE_SOFT  #dcc5bb  → lavagem de fundo
    ROSE_TEXT  #9c7a70  → versão escura do mesmo tom, usada em texto
+   CORAL      #E69B97  → secundária (acentos, shapes, gradientes) — mesma cor da barra top
+   CORAL_DEEP #C97B76  → versão escura do coral (hovers)
 ---------------------------------------------------------------------------- */
 const ROSE = "#c3a398";
 const ROSE_SOFT = "220,197,187";
 const ROSE_TEXT = "#9c7a70";
+const CORAL = "#E69B97";
+const CORAL_DEEP = "#C97B76";
 
 const temas = [
   "Letramento Jurídico sem juridiquês",
@@ -84,7 +88,7 @@ function PublicationCard({ item, index }) {
         {/* Formas apenas nos cantos, longe dos textos */}
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-[#c3a398]/25"
+          className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-[#E69B97]/30"
         />
         <span
           aria-hidden="true"
@@ -106,7 +110,7 @@ function PublicationCard({ item, index }) {
           </div>
 
           <div className="my-4 flex flex-1 items-center justify-center">
-            <div className="aspect-[0.7] w-[72%] max-w-[185px] overflow-hidden rounded-[1.25rem] border border-ink/10 bg-cream shadow-[0_12px_30px_rgba(37,39,34,0.13)]">
+            <div className="aspect-[0.7] w-[72%] max-w-[185px] overflow-hidden rounded-[1.25rem] border border-ink/10 bg-cream shadow-[0_12px_30px_rgba(37,39,34,0.13)] transition-colors duration-300 hover:border-[#E69B97]">
               <BookCover
                 sources={item.capas}
                 alt={`Capa do livro ${item.titulo}`}
@@ -137,11 +141,11 @@ function PalestrasBackdrop() {
       className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
       aria-hidden="true"
     >
-      <div className="absolute -right-56 top-[-10rem] h-[38rem] w-[38rem] rounded-full bg-[radial-gradient(circle,rgba(195,163,152,0.22)_0%,rgba(195,163,152,0.07)_46%,transparent_72%)] blur-2xl" />
+      <div className="absolute -right-56 top-[-10rem] h-[38rem] w-[38rem] rounded-full bg-[radial-gradient(circle,rgba(230,155,151,0.20)_0%,rgba(230,155,151,0.06)_46%,transparent_72%)] blur-2xl" />
       <div className="absolute -left-60 bottom-[-14rem] h-[40rem] w-[40rem] rounded-full bg-[radial-gradient(circle,rgba(156,122,112,0.16)_0%,rgba(195,163,152,0.05)_45%,transparent_72%)] blur-2xl" />
 
       <div className="absolute -right-36 top-[7%] h-[29rem] w-[29rem] rounded-full border border-[#c3a398]/25" />
-      <div className="absolute -right-20 top-[11%] h-[20rem] w-[20rem] rounded-full border border-[#c3a398]/20" />
+      <div className="absolute -right-20 top-[11%] h-[20rem] w-[20rem] rounded-full border border-[#E69B97]/30" />
 
       <svg
         viewBox="0 0 520 420"
@@ -180,7 +184,7 @@ function PalestrasBackdrop() {
         />
       </svg>
 
-      <div className="absolute inset-x-[7%] top-[47%] h-px bg-gradient-to-r from-transparent via-[#c3a398]/40 to-transparent" />
+      <div className="absolute inset-x-[7%] top-[47%] h-px bg-gradient-to-r from-transparent via-[#E69B97]/40 to-transparent" />
     </div>
   );
 }
@@ -197,7 +201,7 @@ export default function Palestras() {
       <div className="relative z-10">
         <div className="max-w-3xl">
           <div className="mb-3 flex items-center gap-3">
-            <span className="h-px w-8 bg-[#c3a398]" />
+            <span className="h-px w-8 bg-gradient-to-r from-[#E69B97] to-[#c3a398]" />
             <span className="eyebrow text-brand-dark">
               Livros &amp; Publicações
             </span>
@@ -206,7 +210,9 @@ export default function Palestras() {
           <Reveal delay={80}>
             <h2 className="font-cinzel text-3xl leading-[1.15] tracking-tight text-ink sm:text-4xl">
               Conhecimento jurídico para quem{" "}
-              <span className="text-[#9c7a70]">vive a rotina escolar</span>
+              <span className="bg-gradient-to-r from-[#9c7a70] to-[#C97B76] bg-clip-text text-transparent">
+                vive a rotina escolar
+              </span>
             </h2>
           </Reveal>
 
@@ -246,7 +252,7 @@ export default function Palestras() {
                   em departamento jurídico e na área de auditoria interna com
                   gestão de riscos.
                 </p>
-                <span className="mt-5 block h-px w-20 bg-[#c3a398]" />
+                <span className="mt-5 block h-px w-20 bg-gradient-to-r from-[#c3a398] to-[#E69B97]" />
               </div>
             </article>
           </Reveal>
@@ -274,7 +280,7 @@ export default function Palestras() {
                   minha carreira, o significado de sucesso e o impacto positivo
                   que eu gostaria de causar com o meu conhecimento.
                 </p>
-                <span className="my-4 block h-px w-14 bg-[#c3a398]" />
+                <span className="my-4 block h-px w-14 bg-gradient-to-r from-[#E69B97] to-[#c3a398]" />
                 <p className="text-base font-semibold leading-[1.5] text-brand-dark xl:text-[13px] xl:leading-[1.5]">
                   Assim, numa decisão muito corajosa, pedi demissão e resolvi
                   atuar profissionalmente com propósito na proteção jurídica de
@@ -287,7 +293,12 @@ export default function Palestras() {
 
         {/* Temas e chamada para contato */}
         <div className="mt-8 overflow-hidden rounded-[2rem] border border-[#c3a398]/30 bg-[rgba(220,197,187,0.16)] lg:mt-10 lg:grid lg:grid-cols-[0.72fr_1.28fr]">
-          <Reveal className="flex flex-col justify-between bg-[rgba(220,197,187,0.38)] p-6 sm:p-7">
+          <Reveal className="relative flex flex-col justify-between overflow-hidden bg-[rgba(220,197,187,0.38)] p-6 sm:p-7">
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[#E69B97]/25"
+            />
+
             <div>
               <p
                 className="text-xs font-semibold uppercase tracking-[0.16em]"
@@ -307,7 +318,7 @@ export default function Palestras() {
               href={site.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="group mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition-colors duration-300 hover:bg-[#9c7a70]"
+              className="group mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition-colors duration-300 hover:bg-[#C97B76]"
             >
               Solicitar uma palestra
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

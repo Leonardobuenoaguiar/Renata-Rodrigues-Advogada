@@ -2,16 +2,37 @@ import { site } from "../data/site";
 import { ArrowRight } from "./icons";
 
 /* Ajuste fino do hero empilhado (mobile / tablet)
-   ALTURA_FOTO  → altura da foto no topo
+   ALTURA_FOTO  → altura da foto no topo.
+                  MAIOR = a foto ocupa mais px da tela e aparece mais
+                  da Dra. (o corte vertical diminui, sobra mais corpo).
+                  Ex.: h-[56svh] antes · h-[64svh] atual · h-[70svh] bem grande
    FOCO         → object-position: [horizontal] [vertical]
+                  2º valor MAIOR = a Dra. SOBE no quadro (a janela desce
+                  na foto, aparecendo mais a parte de baixo dela)
                   2º valor MENOR = a Dra. desce (0% = topo da imagem
-                  alinhado ao topo do quadro) — use 0% se ainda cortar */
-const ALTURA_FOTO = "h-[56svh] min-h-[320px] max-h-[580px]";
-const FOCO = "object-[56%_4%]";
+                  alinhado ao topo do quadro)
+                  → se o ajuste ficar ao contrário, é só inverter o número */
+/* Arquivos: um para o mobile/tablet e outro para o desktop.
+   Os dois precisam estar na pasta public. */
+const FOTO_MOBILE = "/DSC_5577.jpg";
+const FOTO_DESKTOP = "/hero.jpg";
+
+const ALTURA_FOTO = "h-[64svh] min-h-[360px] max-h-[660px]";
+const FOCO = "object-[56%_12%]";
+
+/* Ajuste da foto no DESKTOP (≥1024px)
+   LARGURA → largura da foto em relação à seção.
+             MENOR = MENOS ZOOM (a foto aparece menor e menos cortada).
+             Ex.: lg:w-[90%] muito zoom · lg:w-[78%] atual · lg:w-[68%] bem aberto
+   CENTRO  → onde fica o centro da foto na horizontal (50% = meio da tela).
+             MAIOR = a Dra. aparece mais para a DIREITA.
+             Ex.: lg:left-[62%] atual · lg:left-[70%] mais à direita ainda */
+const LARGURA_FOTO_DESKTOP = "lg:w-[78%]";
+const CENTRO_FOTO_DESKTOP = "lg:left-[62%]";
 
 /* Desktop: "janela" que abre o véu creme sobre o rosto da Dra.
-   x/y   → centro do rosto em % da seção (a foto ocupa 90% centralizada,
-            então 50% da imagem ≈ 50% da seção)
+   x/y   → centro do rosto em % da seção (a foto ocupa 78% da largura,
+            com o centro em 62% — veja LARGURA/CENTRO acima)
    rx/ry → raio da janela suave
    lift  → 0 = sem mexer | 0.5 = remove metade do véu no rosto | 1 = limpa tudo
    (a janela fica na faixa vertical de cima, fora da área do texto) */
@@ -32,7 +53,7 @@ export default function Hero() {
         className={`relative ${ALTURA_FOTO} w-full overflow-hidden lg:hidden`}
       >
         <img
-          src="/hero.jpg"
+          src={FOTO_MOBILE}
           alt="Renata Rodrigues de Souza"
           loading="eager"
           fetchPriority="high"
@@ -54,7 +75,7 @@ export default function Hero() {
       >
         {/* Camada de preenchimento: evita bordas ao reduzir o zoom */}
         <img
-          src="/hero.jpg"
+          src={FOTO_DESKTOP}
           alt=""
           loading="eager"
           decoding="async"
@@ -63,12 +84,12 @@ export default function Hero() {
 
         {/* Foto principal alinhada pelo topo para não cortar o rosto */}
         <img
-          src="/hero.jpg"
+          src={FOTO_DESKTOP}
           alt=""
           loading="eager"
           fetchPriority="high"
           decoding="async"
-          className="absolute inset-y-0 left-1/2 h-full w-full max-w-none -translate-x-1/2 object-cover object-[65%_5%] sm:object-[62%_5%] lg:w-[90%] lg:object-[center_2%] lg:[-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_5%,black_95%,transparent_100%)] lg:[mask-image:linear-gradient(to_right,transparent_0%,black_5%,black_95%,transparent_100%)]"
+          className={`absolute inset-y-0 h-full w-full max-w-none -translate-x-1/2 object-cover object-[65%_5%] sm:object-[62%_5%] lg:object-[center_2%] lg:[-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_5%,black_95%,transparent_100%)] lg:[mask-image:linear-gradient(to_right,transparent_0%,black_5%,black_95%,transparent_100%)] ${CENTRO_FOTO_DESKTOP} ${LARGURA_FOTO_DESKTOP}`}
         />
 
         {/* Mancha clara central, como na imagem de referência
@@ -124,7 +145,7 @@ export default function Hero() {
           </p>
 
           <div
-            className="mt-5 flex flex-col items-center gap-2.5 opacity-0 animate-rise sm:flex-row sm:justify-center lg:justify-start lg:gap-2.5"
+            className="mt-5 flex flex-col items-center gap-3 opacity-0 animate-rise sm:flex-row sm:justify-center lg:justify-start lg:gap-2.5"
             style={{ animationDelay: "600ms" }}
           >
             {/* Botão principal — verde escuro, só texto */}
@@ -132,7 +153,7 @@ export default function Hero() {
               href={site.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-[7px] bg-[#38443b] px-4 py-2 text-[12px] font-semibold leading-none text-cream shadow-[0_6px_16px_-12px_rgba(56,68,59,.7)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#2c362d] hover:shadow-[0_10px_20px_-12px_rgba(56,68,59,.75)] sm:px-5 sm:py-2.5 sm:text-[13px]"
+              className="inline-flex min-h-11 w-[80%] max-w-[300px] items-center justify-center rounded-[7px] bg-[#38443b] px-6 py-3 text-[14px] font-semibold leading-none text-cream shadow-[0_6px_16px_-12px_rgba(56,68,59,.7)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#2c362d] hover:shadow-[0_10px_20px_-12px_rgba(56,68,59,.75)] sm:w-auto sm:px-6 sm:py-3 sm:text-[14px]"
             >
               Fale com Renata
             </a>
@@ -140,7 +161,7 @@ export default function Hero() {
             {/* Botão secundário */}
             <a
               href="#servicos"
-              className="group inline-flex items-center justify-center gap-1.5 rounded-[7px] border border-[#343b34]/35 bg-cream/60 px-4 py-2 text-[12px] font-semibold leading-none text-[#343b34] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#343b34] hover:bg-cream sm:px-5 sm:py-2.5 sm:text-[13px]"
+              className="group inline-flex min-h-11 w-[80%] max-w-[300px] items-center justify-center gap-2 rounded-[7px] border border-[#343b34]/35 bg-cream/60 px-6 py-3 text-[14px] font-semibold leading-none text-[#343b34] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#343b34] hover:bg-cream sm:w-auto sm:px-6 sm:py-3 sm:text-[14px]"
             >
               Conheça as soluções
               <ArrowRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1 sm:h-3.5 sm:w-3.5" />
