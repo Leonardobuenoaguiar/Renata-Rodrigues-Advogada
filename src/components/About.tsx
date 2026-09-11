@@ -301,7 +301,7 @@ export default function About() {
           <p className="sobre-eyebrow">Sobre Renata</p>
 
           <h2 className="sobre-title">
-            Autoridade jurídica com olhar de gestão
+            Autoridade jurídica com olhar de gestão de riscos
           </h2>
         </div>
 

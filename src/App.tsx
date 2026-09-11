@@ -2,10 +2,10 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Atuacao from "./components/Atuacao";
+import Formacao from "./components/Formacao";
 import Servicos from "./components/Servicos";
 import Diferencial from "./components/Diferencial";
 import Artigos from "./components/Artigos";
-import Formacao from "./components/Formacao";
 import Metodologia from "./components/Metodologia";
 import Palestras from "./components/Palestras";
 import Contato from "./components/Contato";
@@ -28,12 +28,12 @@ export default function App() {
         <Hero />
         <About />
         <Atuacao />
+        <Formacao />
         <Servicos />
         <Diferencial />
-        <Artigos />
-        <Formacao />
         <Metodologia /> {/* Como funciona */}
         <Palestras />
+        <Artigos /> {/* agora mostra os destaques do Instagram */}
         <Contato />
       </main>
 

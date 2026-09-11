@@ -128,7 +128,7 @@ export default function Atuacao() {
             title={
               <>
                 Um leque completo para a{" "}
-                <span className="text-brand-dark">gestão educacional</span>
+                <span className="text-brand-dark">gestão jurídica educacional</span>
               </>
             }
           />

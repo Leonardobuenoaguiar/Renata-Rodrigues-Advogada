@@ -24,6 +24,32 @@ const LINKEDIN_URL =
 /* cor do sombreado verde (swatch fornecido) */
 const GREEN = "56,68,59"; // #38443b
 
+/* ------------------------------------------------------------------
+   ONDE O ROSTO ESTÁ  →  é só mexer aqui.
+   x / y  = posição do centro do rosto em % da foto
+   rx/ ry = raio do "furo" suave no sombreado (elipse)
+   lift   = 0 → sem alteração | 1 → sombreado totalmente removido no rosto
+            (0.75 = remove 75% do véu; 0.85 = rosto praticamente limpo)
+
+   DESLOCAR A FOTO INTEIRA (desktop): a <img> tem lg:translate-x-[10%] —
+   empurra a imagem inteira 10% da largura para a direita (é o que mais
+   "move" de verdade; o object-position só mexe dentro do crop).
+   Pode ir até ~35% sem aparecer falha: a sobra fica escondida sob o verde
+   sólido (0-40%). Aumente/diminua o número literal na classe — o Tailwind
+   só gera a classe se o valor estiver escrito no código.
+------------------------------------------------------------------ */
+const FACE = {
+  desktop: { x: "74%", y: "48%", rx: "24%", ry: "40%", lift: 0.95 },
+  mobile: { x: "65%", y: "33%", rx: "38%", ry: "30%", lift: 0.6 },
+};
+
+/* monta o radial-gradient que "abre" o sombreado sobre o rosto */
+const faceMask = (f) =>
+  `radial-gradient(${f.rx} ${f.ry} at ${f.x} ${f.y}, ` +
+  `rgba(0,0,0,${(1 - f.lift).toFixed(2)}) 0%, ` +
+  `rgba(0,0,0,${(1 - f.lift * 0.55).toFixed(2)}) 45%, ` +
+  `#000 100%)`;
+
 export default function Formacao() {
   return (
     <section id="formacao" className="overflow-hidden bg-paper">
@@ -32,27 +58,37 @@ export default function Formacao() {
           src="/formacao.jpg"
           alt="Formação e experiência profissional de Renata Rodrigues de Souza"
           loading="lazy"
-          className="absolute inset-x-0 top-0 -z-30 h-[300px] w-full object-cover object-[65%_center] saturate-[.78] sm:h-[355px] lg:inset-0 lg:h-full lg:object-[72%_center]"
+          className="absolute inset-x-0 top-0 -z-30 h-[300px] w-full object-cover object-[65%_center] saturate-[.88] sm:h-[355px] lg:inset-0 lg:h-full lg:translate-x-[10%] lg:object-[50%_center]"
         />
 
-        {/* mobile: a foto derrete no sombreado verde (fade na altura da foto) */}
+        {/* mobile: a foto derrete no sombreado verde — fade mais tardio p/ não encostar no rosto */}
         <div
           aria-hidden="true"
-          className="absolute inset-x-0 top-0 -z-20 h-[300px] bg-[linear-gradient(180deg,rgba(56,68,59,0)_0%,rgba(56,68,59,.14)_46%,rgba(56,68,59,.72)_74%,rgb(56,68,59)_100%)] sm:h-[355px] lg:hidden"
+          style={{
+            maskImage: faceMask(FACE.mobile),
+            WebkitMaskImage: faceMask(FACE.mobile),
+          }}
+          className="absolute inset-x-0 top-0 -z-20 h-[300px] bg-[linear-gradient(180deg,rgba(56,68,59,0)_0%,rgba(56,68,59,.05)_50%,rgba(56,68,59,.30)_70%,rgba(56,68,59,.72)_86%,rgb(56,68,59)_100%)] sm:h-[355px] lg:hidden"
         />
         {/* mobile: painel verde sólido atrás dos textos */}
         <div
           aria-hidden="true"
           className="absolute inset-x-0 bottom-0 -z-20 top-[300px] bg-[#38443b] sm:top-[355px] lg:hidden"
         />
-        {/* desktop: sombreado verde lateral, dissolvendo sobre a foto */}
+
+        {/* desktop: sombreado verde lateral, dissolvendo sobre a foto (stops mais leves + máscara no rosto) */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-20 hidden bg-[linear-gradient(90deg,rgb(56,68,59)_0%,rgba(56,68,59,.97)_45%,rgba(56,68,59,.92)_60%,rgba(56,68,59,.35)_80%,rgba(56,68,59,.15)_100%)] lg:block"
+          style={{
+            maskImage: faceMask(FACE.desktop),
+            WebkitMaskImage: faceMask(FACE.desktop),
+          }}
+          className="absolute inset-0 -z-20 hidden bg-[linear-gradient(90deg,rgb(56,68,59)_0%,rgba(56,68,59,.96)_40%,rgba(56,68,59,.84)_52%,rgba(56,68,59,.45)_64%,rgba(56,68,59,.16)_76%,rgba(56,68,59,.04)_100%)] lg:block"
         />
+        {/* desktop: vinheta direita menos presente, para não escurecer o rosto */}
         <div
           aria-hidden="true"
-          className="absolute inset-y-0 right-0 -z-10 hidden w-[15%] bg-gradient-to-l from-[#38443b]/45 to-transparent lg:block"
+          className="absolute inset-y-0 right-0 -z-10 hidden w-[8%] bg-gradient-to-l from-[#38443b]/10 to-transparent lg:block"
         />
 
         <div className="relative mx-auto flex min-h-[580px] w-[calc(100%-2.5rem)] max-w-[1135px] items-start pt-[318px] pb-16 sm:pt-[375px] lg:min-h-[555px] lg:w-[calc(100%-4rem)] lg:items-center lg:py-14">
@@ -64,7 +100,7 @@ export default function Formacao() {
 
               <h2 className="mt-4 max-w-[530px] font-cinzel text-[clamp(1.9rem,3.2vw,3rem)] font-medium leading-[1.12] tracking-tight text-paper">
                 Uma trajetória que une{" "}
-                <span className="text-sage">Direito e gestão</span>
+                <span className="text-sage">Direito e auditoria</span>
               </h2>
 
               <p className="mt-4 max-w-[490px] text-[16px] font-medium leading-[1.8] text-paper/80">
@@ -90,7 +126,7 @@ export default function Formacao() {
                       <h3 className="font-cinzel text-[1.02rem] font-medium leading-[1.45] tracking-[0.01em] text-paper sm:text-[1.08rem]">
                         {f.t}
                       </h3>
-                      <p className="mt-1 text-[13.5px] font-bold leading-relaxed tracking-[0.02em] text-sage">
+                      <p className="mt-1.5 text-[13.5px] font-bold leading-relaxed tracking-[0.02em] text-sage">
                         {f.i}
                       </p>
                     </div>

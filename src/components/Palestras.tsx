@@ -4,6 +4,15 @@ import Reveal from "./Reveal";
 import { site } from "../data/site";
 import { ArrowRight } from "./icons";
 
+/* ---------------- Paleta rosé da seção (mesma da Metodologia) ----------------
+   ROSE       #c3a398  → tom principal (decoração, bordas, traços)
+   ROSE_SOFT  #dcc5bb  → lavagem de fundo
+   ROSE_TEXT  #9c7a70  → versão escura do mesmo tom, usada em texto
+---------------------------------------------------------------------------- */
+const ROSE = "#c3a398";
+const ROSE_SOFT = "220,197,187";
+const ROSE_TEXT = "#9c7a70";
+
 const temas = [
   "Letramento Jurídico sem juridiquês",
   "Autoridade Escolar com Segurança Jurídica",
@@ -70,16 +79,16 @@ function PublicationCard({ item, index }) {
       className="w-[82vw] max-w-[340px] shrink-0 snap-center xl:w-auto xl:max-w-none"
     >
       <article
-        className={`relative flex h-full min-h-[410px] flex-col overflow-hidden rounded-[2rem] border border-ink/10 ${item.painel}`}
+        className={`relative flex h-full min-h-[410px] flex-col overflow-hidden rounded-[2rem] border border-[#c3a398]/30 ${item.painel}`}
       >
         {/* Formas apenas nos cantos, longe dos textos */}
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-brand/20"
+          className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-[#c3a398]/25"
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute -bottom-14 -left-14 h-32 w-32 rounded-full bg-sage/25"
+          className="pointer-events-none absolute -bottom-14 -left-14 h-32 w-32 rounded-full bg-[rgba(220,197,187,0.45)]"
         />
 
         <div className="relative z-10 flex flex-1 flex-col px-5 pb-5 pt-4">
@@ -89,7 +98,8 @@ function PublicationCard({ item, index }) {
             </span>
             <span
               aria-hidden="true"
-              className="text-[10px] font-semibold tracking-[0.14em] text-sage-deep"
+              className="text-[10px] font-semibold tracking-[0.14em]"
+              style={{ color: ROSE_TEXT }}
             >
               {String(index + 1).padStart(2, "0")}
             </span>
@@ -105,7 +115,10 @@ function PublicationCard({ item, index }) {
           </div>
 
           <div className="text-center">
-            <p className="text-[9px] font-semibold uppercase tracking-[0.16em] text-sage-deep">
+            <p
+              className="text-[9px] font-semibold uppercase tracking-[0.16em]"
+              style={{ color: ROSE_TEXT }}
+            >
               Produção jurídica
             </p>
             <h3 className="mt-1.5 font-cinzel text-[15px] leading-snug text-ink">
@@ -124,16 +137,16 @@ function PalestrasBackdrop() {
       className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
       aria-hidden="true"
     >
-      <div className="absolute -right-56 top-[-10rem] h-[38rem] w-[38rem] rounded-full bg-[radial-gradient(circle,rgba(126,143,122,0.16)_0%,rgba(126,143,122,0.05)_46%,transparent_72%)] blur-2xl" />
-      <div className="absolute -left-60 bottom-[-14rem] h-[40rem] w-[40rem] rounded-full bg-[radial-gradient(circle,rgba(52,59,52,0.11)_0%,rgba(52,59,52,0.04)_45%,transparent_72%)] blur-2xl" />
+      <div className="absolute -right-56 top-[-10rem] h-[38rem] w-[38rem] rounded-full bg-[radial-gradient(circle,rgba(195,163,152,0.22)_0%,rgba(195,163,152,0.07)_46%,transparent_72%)] blur-2xl" />
+      <div className="absolute -left-60 bottom-[-14rem] h-[40rem] w-[40rem] rounded-full bg-[radial-gradient(circle,rgba(156,122,112,0.16)_0%,rgba(195,163,152,0.05)_45%,transparent_72%)] blur-2xl" />
 
-      <div className="absolute -right-36 top-[7%] h-[29rem] w-[29rem] rounded-full border border-[#343b34]/[0.06]" />
-      <div className="absolute -right-20 top-[11%] h-[20rem] w-[20rem] rounded-full border border-[#343b34]/[0.05]" />
+      <div className="absolute -right-36 top-[7%] h-[29rem] w-[29rem] rounded-full border border-[#c3a398]/25" />
+      <div className="absolute -right-20 top-[11%] h-[20rem] w-[20rem] rounded-full border border-[#c3a398]/20" />
 
       <svg
         viewBox="0 0 520 420"
         fill="none"
-        className="absolute -right-20 top-10 hidden w-[25rem] text-[#343b34] opacity-[0.075] sm:block sm:w-[30rem] lg:right-2 lg:top-6 lg:w-[34rem] lg:opacity-[0.09]"
+        className="absolute -right-20 top-10 hidden w-[25rem] text-[#c3a398] opacity-[0.14] sm:block sm:w-[30rem] lg:right-2 lg:top-6 lg:w-[34rem] lg:opacity-[0.17]"
       >
         <path
           d="M257 357C210 319 148 306 70 326L66 105C143 84 207 97 257 135V357Z"
@@ -167,7 +180,7 @@ function PalestrasBackdrop() {
         />
       </svg>
 
-      <div className="absolute inset-x-[7%] top-[47%] h-px bg-gradient-to-r from-transparent via-[#343b34]/[0.05] to-transparent" />
+      <div className="absolute inset-x-[7%] top-[47%] h-px bg-gradient-to-r from-transparent via-[#c3a398]/40 to-transparent" />
     </div>
   );
 }
@@ -184,16 +197,16 @@ export default function Palestras() {
       <div className="relative z-10">
         <div className="max-w-3xl">
           <div className="mb-3 flex items-center gap-3">
-            <span className="h-px w-8 bg-brand-deep/70" />
+            <span className="h-px w-8 bg-[#c3a398]" />
             <span className="eyebrow text-brand-dark">
-              Livros & Publicações
+              Livros &amp; Publicações
             </span>
           </div>
 
           <Reveal delay={80}>
             <h2 className="font-cinzel text-3xl leading-[1.15] tracking-tight text-ink sm:text-4xl">
               Conhecimento jurídico para quem{" "}
-              <span className="text-brand-dark">vive a rotina escolar</span>
+              <span className="text-[#9c7a70]">vive a rotina escolar</span>
             </h2>
           </Reveal>
 
@@ -206,7 +219,10 @@ export default function Palestras() {
           </Reveal>
         </div>
 
-        <p className="mt-5 text-xs font-medium uppercase tracking-[0.16em] text-sage-deep xl:hidden">
+        <p
+          className="mt-5 text-xs font-medium uppercase tracking-[0.16em] xl:hidden"
+          style={{ color: ROSE_TEXT }}
+        >
           Deslize para conhecer a trajetória e as publicações
         </p>
 
@@ -214,9 +230,12 @@ export default function Palestras() {
         <div className="-mx-5 mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 [scrollbar-width:none] sm:-mx-8 sm:px-8 xl:mx-0 xl:mt-8 xl:grid xl:grid-cols-[1fr_repeat(3,minmax(0,1fr))_1.12fr] xl:gap-3 xl:overflow-visible xl:px-0 xl:pb-0 [&::-webkit-scrollbar]:hidden">
           {/* Experiência profissional */}
           <Reveal className="w-[82vw] max-w-[340px] shrink-0 snap-center xl:w-auto xl:max-w-none">
-            <article className="flex h-full min-h-[410px] flex-col justify-center overflow-hidden rounded-[2rem] border border-ink/10 bg-[#f6eee4] p-6 xl:p-4">
+            <article className="flex h-full min-h-[410px] flex-col justify-center overflow-hidden rounded-[2rem] border border-[#c3a398]/30 bg-[#f6eee4] p-6 xl:p-4">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-sage-deep">
+                <p
+                  className="text-xs font-semibold uppercase tracking-[0.16em]"
+                  style={{ color: ROSE_TEXT }}
+                >
                   Experiência
                 </p>
                 <p className="mt-4 text-xl leading-[1.45] text-ink xl:text-[15px] xl:leading-[1.45]">
@@ -227,7 +246,7 @@ export default function Palestras() {
                   em departamento jurídico e na área de auditoria interna com
                   gestão de riscos.
                 </p>
-                <span className="mt-5 block h-px w-20 bg-brand/70" />
+                <span className="mt-5 block h-px w-20 bg-[#c3a398]" />
               </div>
             </article>
           </Reveal>
@@ -242,9 +261,12 @@ export default function Palestras() {
             delay={360}
             className="w-[82vw] max-w-[340px] shrink-0 snap-center xl:w-auto xl:max-w-none"
           >
-            <article className="flex h-full min-h-[410px] flex-col justify-center overflow-hidden rounded-[2rem] border border-ink/10 bg-[#f6eee4] p-6 xl:p-4">
+            <article className="flex h-full min-h-[410px] flex-col justify-center overflow-hidden rounded-[2rem] border border-[#c3a398]/30 bg-[#f6eee4] p-6 xl:p-4">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-sage-deep">
+                <p
+                  className="text-xs font-semibold uppercase tracking-[0.16em]"
+                  style={{ color: ROSE_TEXT }}
+                >
                   Propósito
                 </p>
                 <p className="mt-4 text-base leading-[1.55] text-ink xl:text-[13px] xl:leading-[1.5]">
@@ -252,7 +274,7 @@ export default function Palestras() {
                   minha carreira, o significado de sucesso e o impacto positivo
                   que eu gostaria de causar com o meu conhecimento.
                 </p>
-                <span className="my-4 block h-px w-14 bg-brand/70" />
+                <span className="my-4 block h-px w-14 bg-[#c3a398]" />
                 <p className="text-base font-semibold leading-[1.5] text-brand-dark xl:text-[13px] xl:leading-[1.5]">
                   Assim, numa decisão muito corajosa, pedi demissão e resolvi
                   atuar profissionalmente com propósito na proteção jurídica de
@@ -264,10 +286,13 @@ export default function Palestras() {
         </div>
 
         {/* Temas e chamada para contato */}
-        <div className="mt-8 overflow-hidden rounded-[2rem] border border-ink/10 bg-paper/40 lg:mt-10 lg:grid lg:grid-cols-[0.72fr_1.28fr]">
-          <Reveal className="flex flex-col justify-between bg-sage/25 p-6 sm:p-7">
+        <div className="mt-8 overflow-hidden rounded-[2rem] border border-[#c3a398]/30 bg-[rgba(220,197,187,0.16)] lg:mt-10 lg:grid lg:grid-cols-[0.72fr_1.28fr]">
+          <Reveal className="flex flex-col justify-between bg-[rgba(220,197,187,0.38)] p-6 sm:p-7">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-sage-deep">
+              <p
+                className="text-xs font-semibold uppercase tracking-[0.16em]"
+                style={{ color: ROSE_TEXT }}
+              >
                 Formação prática
               </p>
               <h3 className="mt-3 font-cinzel text-2xl leading-tight text-ink sm:text-3xl">
@@ -282,7 +307,7 @@ export default function Palestras() {
               href={site.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="group mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition-colors duration-300 hover:bg-brand-dark"
+              className="group mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition-colors duration-300 hover:bg-[#9c7a70]"
             >
               Solicitar uma palestra
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -297,7 +322,8 @@ export default function Palestras() {
                   className="flex items-start gap-3 border-b border-line py-3 text-[15px] leading-relaxed text-ink"
                 >
                   <span
-                    className="mt-0.5 text-xs font-medium text-sage-deep"
+                    className="mt-0.5 text-xs font-medium"
+                    style={{ color: ROSE_TEXT }}
                     aria-hidden="true"
                   >
                     {String(index + 1).padStart(2, "0")}

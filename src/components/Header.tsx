@@ -3,6 +3,13 @@ import { nav, site } from "../data/site";
 import { Menu, Close, ArrowRight } from "./icons";
 import Modal from "./Modal";
 
+/* Itens que NÃO devem aparecer no header.
+   As seções continuam existindo na página — só saem do menu.
+   (Se preferir, apague os objetos do array `nav` em ../data/site) */
+const NAV_OCULTOS = ["inicio", "artigos"];
+
+const navItems = nav.filter((item) => !NAV_OCULTOS.includes(item.id));
+
 function WhatsAppIcon({ className = "" }) {
   return (
     <svg
@@ -56,7 +63,7 @@ function formatWhatsAppNumber(value) {
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState("inicio");
+  const [active, setActive] = useState("");
 
   const whatsappLabel =
     site.phone || site.whatsappNumber || formatWhatsAppNumber(site.whatsapp);
@@ -97,7 +104,7 @@ export default function Header() {
       },
     );
 
-    for (const item of nav) {
+    for (const item of navItems) {
       const section = document.getElementById(item.id);
       if (section) observer.observe(section);
     }
@@ -152,7 +159,7 @@ export default function Header() {
           aria-label="Navegação principal"
           className="hidden items-center gap-5 xl:flex"
         >
-          {nav.map((item) => (
+          {navItems.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
@@ -223,7 +230,7 @@ export default function Header() {
 
           <div className="flex min-h-0 flex-1 flex-col justify-between overflow-y-auto overscroll-contain px-6 pb-6 pt-3">
             <nav aria-label="Navegação móvel" className="flex flex-col">
-              {nav.map((item, i) => (
+              {navItems.map((item, i) => (
                 <a
                   key={item.id}
                   href={`#${item.id}`}

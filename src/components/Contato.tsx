@@ -1,6 +1,12 @@
 import Reveal from "./Reveal";
 import { site } from "../data/site";
-import { MapPin, Phone, WhatsApp, Instagram, LinkedIn } from "./icons";
+import {
+  MapPin,
+  Phone,
+  WhatsApp,
+  Instagram,
+  LinkedIn,
+} from "./icons";
 
 export default function Contato() {
   return (
@@ -94,43 +100,40 @@ export default function Contato() {
             {/* Painel direito */}
             <div className="bg-paper/30 p-7 sm:p-8 lg:p-8">
               <Reveal delay={120}>
-                <div className="space-y-4">
-                  <a
-                    href={`tel:${site.phoneHref}`}
-                    className="group flex items-center gap-3.5 border-b border-line pb-4 transition-colors"
-                  >
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sage/20 text-sage-deep transition-colors group-hover:bg-sage/30">
-                      <Phone className="h-[18px] w-[18px]" />
+                {/* Telefone / WhatsApp */}
+                <a
+                  href={`tel:${site.phoneHref}`}
+                  className="group flex items-center gap-3.5 border-b border-line pb-4 transition-colors"
+                >
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sage/20 text-sage-deep transition-colors group-hover:bg-sage/30">
+                    <Phone className="h-[18px] w-[18px]" />
+                  </span>
+                  <span>
+                    <span className="mb-1 block text-xs font-medium uppercase tracking-[0.12em] text-ink-soft">
+                      Telefone / WhatsApp
                     </span>
-                    <span>
-                      <span className="mb-1 block text-xs font-medium uppercase tracking-[0.12em] text-ink-soft">
-                        Telefone / WhatsApp
-                      </span>
-                      <span className="text-lg font-medium text-ink">
-                        {site.phoneDisplay}
-                      </span>
+                    <span className="text-lg font-medium text-ink">
+                      {site.phoneDisplay}
                     </span>
-                  </a>
+                  </span>
+                </a>
 
-                </div>
-
-                <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
+                <div className="mt-4 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
                   <a
                     href={site.whatsapp}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[4px] bg-[#22483e] px-4 py-3 text-sm font-semibold text-cream transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#183b33] sm:col-span-2"
+                    className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[4px] bg-[#22483e] px-4 py-3 text-sm font-semibold text-cream transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#183b33] sm:col-span-2 lg:col-span-1"
                   >
                     <WhatsApp className="h-[18px] w-[18px]" />
                     Falar pelo WhatsApp
                   </a>
 
-
                   <a
                     href={site.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-sage/60 px-4 py-3 text-sm font-semibold text-ink transition-colors hover:bg-sage"
+                    className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[4px] border border-[#22483e]/30 bg-cream/60 px-4 py-3 text-sm font-semibold text-[#22483e] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#22483e] hover:bg-cream"
                   >
                     <Instagram className="h-4 w-4" />
                     Instagram
@@ -140,7 +143,7 @@ export default function Contato() {
                     href={site.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-sage/60 px-4 py-3 text-sm font-semibold text-ink transition-colors hover:bg-sage"
+                    className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[4px] border border-[#22483e]/30 bg-cream/60 px-4 py-3 text-sm font-semibold text-[#22483e] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#22483e] hover:bg-cream sm:col-span-2 lg:col-span-1"
                   >
                     <LinkedIn className="h-4 w-4" />
                     LinkedIn

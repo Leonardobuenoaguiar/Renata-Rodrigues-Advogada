@@ -1,6 +1,15 @@
 import Section, { SectionHeading } from "./Section";
 import Reveal from "./Reveal";
 
+/* ---------------- Paleta rosé desta seção (tons do print) ----------------
+   ROSE       #c3a398  → tom principal (decoração, bordas, traços)
+   ROSE_SOFT  #dcc5bb  → lavagem de fundo
+   ROSE_TEXT  #9c7a70  → versão escura do mesmo tom, usada em texto
+------------------------------------------------------------------------- */
+const ROSE = "195,163,152";
+const ROSE_SOFT = "220,197,187";
+const ROSE_TEXT = "#9c7a70";
+
 const steps = [
   {
     n: "01",
@@ -130,21 +139,21 @@ export default function Metodologia() {
       tone="paper"
       className="relative isolate overflow-hidden py-10 lg:py-12"
     >
-      {/* Fundo decorativo suave */}
+      {/* Fundo decorativo suave — agora em rosé */}
       <div
         className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
         aria-hidden="true"
       >
-        <div className="absolute -left-52 top-12 h-[32rem] w-[32rem] rounded-full bg-[radial-gradient(circle,rgba(126,143,122,0.16)_0%,rgba(126,143,122,0.06)_42%,transparent_72%)] blur-xl" />
-        <div className="absolute -right-56 bottom-[-12rem] h-[38rem] w-[38rem] rounded-full bg-[radial-gradient(circle,rgba(52,59,52,0.14)_0%,rgba(52,59,52,0.05)_46%,transparent_72%)] blur-2xl" />
+        <div className="absolute -left-52 top-12 h-[32rem] w-[32rem] rounded-full bg-[radial-gradient(circle,rgba(195,163,152,0.22)_0%,rgba(195,163,152,0.08)_42%,transparent_72%)] blur-xl" />
+        <div className="absolute -right-56 bottom-[-12rem] h-[38rem] w-[38rem] rounded-full bg-[radial-gradient(circle,rgba(156,122,112,0.16)_0%,rgba(195,163,152,0.06)_46%,transparent_72%)] blur-2xl" />
 
-        <div className="absolute -left-40 top-[18%] h-[27rem] w-[27rem] rounded-full border border-[#343b34]/[0.07]" />
-        <div className="absolute -left-24 top-[24%] h-[18rem] w-[18rem] rounded-full border border-[#343b34]/[0.05]" />
+        <div className="absolute -left-40 top-[18%] h-[27rem] w-[27rem] rounded-full border border-[#c3a398]/25" />
+        <div className="absolute -left-24 top-[24%] h-[18rem] w-[18rem] rounded-full border border-[#c3a398]/20" />
 
-        <BotanicalBranch className="absolute -right-8 top-4 w-[19rem] text-[#687765] opacity-[0.14] sm:w-[24rem] lg:right-2 lg:top-0 lg:w-[29rem] lg:opacity-[0.17]" />
-        <BotanicalBranch className="absolute -bottom-40 -left-20 w-[18rem] -scale-x-100 rotate-12 text-[#687765] opacity-[0.09] sm:w-[22rem] lg:w-[26rem]" />
+        <BotanicalBranch className="absolute -right-8 top-4 w-[19rem] text-[#c3a398] opacity-[0.19] sm:w-[24rem] lg:right-2 lg:top-0 lg:w-[29rem] lg:opacity-[0.24]" />
+        <BotanicalBranch className="absolute -bottom-40 -left-20 w-[18rem] -scale-x-100 rotate-12 text-[#c3a398] opacity-[0.13] sm:w-[22rem] lg:w-[26rem]" />
 
-        <div className="absolute inset-x-[8%] top-1/2 h-px bg-gradient-to-r from-transparent via-[#343b34]/[0.06] to-transparent" />
+        <div className="absolute inset-x-[8%] top-1/2 h-px bg-gradient-to-r from-transparent via-[#c3a398]/40 to-transparent" />
       </div>
 
       <div className="relative z-10">
@@ -154,24 +163,27 @@ export default function Metodologia() {
           title={
             <>
               Uma metodologia clara, do{" "}
-              <span className="text-brand-dark">
+              <span className="text-[#9c7a70]">
                 diagnóstico à prevenção
               </span>
             </>
           }
         />
 
-        <div className="relative mt-8 rounded-[2rem] border border-[#343b34]/[0.07] bg-cream/25 px-5 py-6 shadow-[0_24px_70px_rgba(52,59,52,0.05)] backdrop-blur-[2px] sm:px-8 lg:px-10">
+        <div className="relative mt-8 rounded-[2rem] border border-[#c3a398]/30 bg-[rgba(220,197,187,0.14)] px-5 py-6 shadow-[0_24px_70px_rgba(156,122,112,0.12)] backdrop-blur-[2px] sm:px-8 lg:px-10">
           <div className="pointer-events-none absolute left-0 right-0 top-[3.75rem] hidden lg:block">
-            <div className="mx-auto h-px w-[76%] bg-[#343b34]/20" />
+            <div className="mx-auto h-px w-[76%] bg-[#c3a398]/50" />
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             {steps.map((s, i) => (
               <Reveal key={s.n} delay={i * 120}>
                 <div className="group relative text-center lg:text-left">
-                  <div className="relative z-10 mx-auto flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border border-brand-deep/50 bg-cream/90 shadow-[0_8px_24px_rgba(52,59,52,0.07)] backdrop-blur-sm transition-all duration-500 group-hover:-translate-y-1 group-hover:border-[#343b34] group-hover:bg-[#343b34] group-hover:shadow-[0_12px_28px_rgba(52,59,52,0.16)] lg:mx-0">
-                    <span className="font-cinzel text-lg text-brand-dark transition-colors duration-500 group-hover:text-cream">
+                  <div className="relative z-10 mx-auto flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border border-[#c3a398]/70 bg-cream/90 shadow-[0_8px_24px_rgba(156,122,112,0.10)] backdrop-blur-sm transition-all duration-500 group-hover:-translate-y-1 group-hover:border-[#c3a398] group-hover:bg-[#c3a398] group-hover:shadow-[0_12px_28px_rgba(156,122,112,0.28)] lg:mx-0">
+                    <span
+                      className="font-cinzel text-lg transition-colors duration-500 group-hover:text-cream"
+                      style={{ color: ROSE_TEXT }}
+                    >
                       {s.n}
                     </span>
                   </div>
