@@ -261,7 +261,7 @@ export default function Podcast() {
                 className="inline-flex min-h-11 w-[80%] items-center justify-center gap-2.5 rounded-[7px] bg-[#E69B97] px-8 py-3 text-[14px] font-semibold leading-none text-[#343b34] shadow-[0_6px_16px_-12px_rgba(230,155,151,.7)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#C97B76] hover:text-cream hover:shadow-[0_10px_20px_-12px_rgba(230,155,151,.75)] sm:w-auto"
               >
                 <SpotifyIcon className="h-4 w-4" />
-                Ouvir no Spotify
+                Ouça no Spotify
               </a>
 
               <a
@@ -272,7 +272,7 @@ export default function Podcast() {
                 className="inline-flex min-h-11 w-[80%] items-center justify-center gap-2.5 rounded-[7px] border border-[#E69B97] bg-transparent px-8 py-3 text-[14px] font-semibold leading-none text-[#9c7a70] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#C97B76] hover:bg-[#E69B97] hover:text-[#343b34] sm:w-auto"
               >
                 <YouTubeIcon className="h-4 w-4" />
-                Ouvir no YouTube
+                Veja no YouTube
               </a>
             </div>
           </Reveal>
