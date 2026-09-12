@@ -248,10 +248,11 @@ export default function Podcast() {
           </Reveal>
 
           {/* botões — Spotify (coral sólido) e YouTube (contorno coral).
-              No mobile cada um ocupa ~80% da largura e ficam empilhados;
-              do sm para cima ficam lado a lado. Altura mínima de 44px. */}
+              No mobile ficam empilhados e CENTRALIZADOS (~80% da largura);
+              do sm para cima voltam à posição original, à esquerda.
+              Altura mínima de 44px. */}
           <Reveal delay={220}>
-            <div className="mt-7 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+            <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row sm:items-center sm:justify-start">
               <a
                 href={PODCAST_SPOTIFY}
                 target="_blank"
