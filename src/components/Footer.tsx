@@ -1,6 +1,17 @@
 import { nav, site } from "../data/site";
 import { Instagram, LinkedIn, Phone } from "./icons";
 
+/* ------------------------------------------------------------------
+   O rodapé mostra os mesmos itens do menu (data/site.ts).
+   Aqui a gente só TROCA o "Artigos" pelo "Podcast":
+   o item entra no mesmo lugar em que o Artigos estava e aponta
+   para a seção #podcast. O Header continua do jeito que estava,
+   porque a troca é feita só no rodapé.
+------------------------------------------------------------------ */
+const navFooter = nav.map((n) =>
+  n.id === "artigos" ? { ...n, id: "podcast", label: "Podcast" } : n
+);
+
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-[#343b34] text-paper">
@@ -38,7 +49,7 @@ export default function Footer() {
               Navegação
             </h4>
             <ul className="mt-6 space-y-3">
-              {nav.map((n) => (
+              {navFooter.map((n) => (
                 <li key={n.id}>
                   <a
                     href={`#${n.id}`}

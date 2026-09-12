@@ -5,9 +5,10 @@ import Atuacao from "./components/Atuacao";
 import Formacao from "./components/Formacao";
 import Servicos from "./components/Servicos";
 import Diferencial from "./components/Diferencial";
-import Artigos from "./components/Artigos";
 import Metodologia from "./components/Metodologia";
 import Palestras from "./components/Palestras";
+import Podcast from "./components/Podcast"; // agora dentro de src/components/
+import Artigos from "./components/Artigos";
 import Contato from "./components/Contato";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
@@ -31,9 +32,10 @@ export default function App() {
         <Formacao />
         <Servicos />
         <Diferencial />
-        <Metodologia /> {/* Como funciona */}
+        <Metodologia />
         <Palestras />
-        <Artigos /> {/* agora mostra os destaques do Instagram */}
+        <Podcast />
+        <Artigos />
         <Contato />
       </main>
 

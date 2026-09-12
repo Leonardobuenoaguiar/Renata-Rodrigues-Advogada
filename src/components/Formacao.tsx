@@ -25,22 +25,46 @@ const LINKEDIN_URL =
 const GREEN = "56,68,59"; // #38443b
 
 /* ------------------------------------------------------------------
+   MOBILE: ENQUADRAMENTO DA FOTO (até 1023px)
+   2º valor do object-position:
+     MAIOR = a foto SOBE  → aparece mais a parte de baixo dela (pés)
+     MENOR = a foto DESCE → aparece mais o topo / cabeça
+
+   Histórico: 50% → 80% → 86% → 76% → 90% → 40% → 48% (agora).
+   Última mudança: 40% → 48% (só um POUCO mais para cima, como pedido).
+   Se quiser subir mais um pouco: aumente o % (ex.: 55-60%).
+   Se quiser descer de novo (mais cabeça): diminua o % (ex.: 35%).
+------------------------------------------------------------------ */
+const FOCO_MOBILE = "object-[65%_48%]";
+
+/* ------------------------------------------------------------------
    ONDE O ROSTO ESTÁ  →  é só mexer aqui.
-   x / y  = posição do centro do rosto em % da foto
+   x / y  = posição do centro do rosto em % do quadro (overlay)
    rx/ ry = raio do "furo" suave no sombreado (elipse)
    lift   = 0 → sem alteração | 1 → sombreado totalmente removido no rosto
-            (0.75 = remove 75% do véu; 0.85 = rosto praticamente limpo)
 
-   DESLOCAR A FOTO INTEIRA (desktop): a <img> tem lg:translate-x-[10%] —
-   empurra a imagem inteira 10% da largura para a direita (é o que mais
-   "move" de verdade; o object-position só mexe dentro do crop).
-   Pode ir até ~35% sem aparecer falha: a sobra fica escondida sob o verde
-   sólido (0-40%). Aumente/diminua o número literal na classe — o Tailwind
-   só gera a classe se o valor estiver escrito no código.
+   MOBILE (foto desceu 90% → 40%; o rosto sobe para a parte de cima
+   do quadro, então a janela acompanha para cima):
+     y 32% → 26%  (janela sobe junto com o rosto)
+     ry 46%       (folga vertical no rosto)
+     lift 0.8     (remove 80% do verde em cima do rosto)
+
+   DESKTOP (foto ancorada à direita, ~56% de largura):
+     A <img> ocupa só a faixa da direita (lg:w-[56%] / xl:w-[50%]).
+     Quanto MENOR a largura, MENOS o navegador estica os pixels
+     → a foto fica menos "pixelada". A borda esquerda tem máscara
+     suave (fade), por isso não aparece "risco" de emenda com o verde.
+     O object 50%_34% enquadra cabeça/ombros e desce um pouco para
+     não cortar os pés (era 20% — subimos para mostrar os pés).
+     IMPORTANTE: se continuar pixelada, o problema é a RESOLUÇÃO do
+     arquivo /formacao.jpg (está sendo ampliado). Troque por uma versão
+     com ~1400-1600px de largura — ou reduza a largura aqui (ex.: lg:w-[48%]).
+     Se os pés ainda cortarem: 34% → 40-45% (sobe mais a foto).
+     Se cortar a cabeça: 34% → 25-28% (desce um pouco).
 ------------------------------------------------------------------ */
 const FACE = {
-  desktop: { x: "74%", y: "48%", rx: "24%", ry: "40%", lift: 0.95 },
-  mobile: { x: "65%", y: "33%", rx: "38%", ry: "30%", lift: 0.6 },
+  desktop: { x: "70%", y: "38%", rx: "22%", ry: "38%", lift: 0.95 },
+  mobile: { x: "65%", y: "25%", rx: "42%", ry: "46%", lift: 0.8 },
 };
 
 /* monta o radial-gradient que "abre" o sombreado sobre o rosto */
@@ -58,17 +82,21 @@ export default function Formacao() {
           src="/formacao.jpg"
           alt="Formação e experiência profissional de Renata Rodrigues de Souza"
           loading="lazy"
-          className="absolute inset-x-0 top-0 -z-30 h-[300px] w-full object-cover object-[65%_center] saturate-[.88] sm:h-[355px] lg:inset-0 lg:h-full lg:translate-x-[10%] lg:object-[50%_center]"
+          decoding="async"
+          className={`absolute inset-x-0 top-0 -z-30 h-[300px] w-full object-cover sm:h-[355px] ${FOCO_MOBILE} lg:inset-y-0 lg:left-auto lg:right-0 lg:h-full lg:w-[56%] lg:object-[50%_34%] lg:[mask-image:linear-gradient(to_right,transparent_0%,black_20%)] lg:[-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_20%)] xl:w-[50%]`}
         />
 
-        {/* mobile: a foto derrete no sombreado verde — fade mais tardio p/ não encostar no rosto */}
+        {/* mobile: a foto derrete no verde — o verde agora só entra depois
+            dos ~68% (era 62%), bem abaixo das pernas, para tirar o "blur"
+            verde de cima delas. Ajuste os stops se quiser o derretido
+            mais para cima (diminuir %) ou mais para baixo (aumentar %). */}
         <div
           aria-hidden="true"
           style={{
             maskImage: faceMask(FACE.mobile),
             WebkitMaskImage: faceMask(FACE.mobile),
           }}
-          className="absolute inset-x-0 top-0 -z-20 h-[300px] bg-[linear-gradient(180deg,rgba(56,68,59,0)_0%,rgba(56,68,59,.05)_50%,rgba(56,68,59,.30)_70%,rgba(56,68,59,.72)_86%,rgb(56,68,59)_100%)] sm:h-[355px] lg:hidden"
+          className="absolute inset-x-0 top-0 -z-20 h-[300px] bg-[linear-gradient(180deg,rgba(56,68,59,0)_0%,rgba(56,68,59,0)_58%,rgba(56,68,59,.04)_68%,rgba(56,68,59,.16)_80%,rgba(56,68,59,.45)_89%,rgba(56,68,59,.85)_96%,rgb(56,68,59)_100%)] sm:h-[355px] lg:hidden"
         />
         {/* mobile: painel verde sólido atrás dos textos */}
         <div
@@ -76,16 +104,17 @@ export default function Formacao() {
           className="absolute inset-x-0 bottom-0 -z-20 top-[300px] bg-[#38443b] sm:top-[355px] lg:hidden"
         />
 
-        {/* desktop: sombreado verde lateral, dissolvendo sobre a foto (stops mais leves + máscara no rosto) */}
+        {/* desktop: sombreado verde lateral (stops um pouco mais leves que
+            antes, para não "achatar" a foto e evidenciar pixelação) */}
         <div
           aria-hidden="true"
           style={{
             maskImage: faceMask(FACE.desktop),
             WebkitMaskImage: faceMask(FACE.desktop),
           }}
-          className="absolute inset-0 -z-20 hidden bg-[linear-gradient(90deg,rgb(56,68,59)_0%,rgba(56,68,59,.96)_40%,rgba(56,68,59,.84)_52%,rgba(56,68,59,.45)_64%,rgba(56,68,59,.16)_76%,rgba(56,68,59,.04)_100%)] lg:block"
+          className="absolute inset-0 -z-20 hidden bg-[linear-gradient(90deg,rgb(56,68,59)_0%,rgba(56,68,59,.97)_34%,rgba(56,68,59,.82)_48%,rgba(56,68,59,.42)_60%,rgba(56,68,59,.14)_72%,rgba(56,68,59,.04)_100%)] lg:block"
         />
-        {/* desktop: vinheta direita menos presente, para não escurecer o rosto */}
+        {/* desktop: vinheta direita bem leve, para não escurecer o rosto */}
         <div
           aria-hidden="true"
           className="absolute inset-y-0 right-0 -z-10 hidden w-[8%] bg-gradient-to-l from-[#38443b]/10 to-transparent lg:block"

@@ -14,27 +14,7 @@ export default function Contato() {
       id="contato"
       className="relative isolate scroll-mt-28 overflow-hidden border-b-[18px] border-[#f7eee4] bg-[#1d302b] px-5 py-8 sm:px-8 sm:py-10 lg:flex lg:min-h-[430px] lg:items-center lg:py-8"
     >
-      {/* Camada de preenchimento: evita bordas ao abrir o enquadramento */}
-      <img
-        src="/background.jfif"
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-30 h-full w-full scale-105 object-cover object-center brightness-[0.68] contrast-125 saturate-125 blur-[4px]"
-        loading="lazy"
-        decoding="async"
-      />
-
-      {/* Imagem principal com bem menos zoom */}
-      <img
-        src="/background.jfif"
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-30 h-full w-full object-contain object-center brightness-[0.82] contrast-125 saturate-125"
-        loading="lazy"
-        decoding="async"
-      />
-
-      {/* Camadas leves: a textura da imagem continua visível */}
+      {/* Camadas leves de textura sobre o fundo verde escuro */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-20 bg-[#10251f]/20"
@@ -46,11 +26,18 @@ export default function Contato() {
 
       <Reveal className="relative z-10 mx-auto w-full max-w-[1040px]">
         <div className="relative overflow-hidden rounded-[1.8rem] bg-cream/95 shadow-[0_28px_80px_rgba(6,18,14,0.34)] ring-1 ring-white/20 backdrop-blur-[2px]">
-          {/* Recorte central superior inspirado na referência */}
-          <span
-            aria-hidden="true"
-            className="pointer-events-none absolute left-1/2 top-0 z-30 h-5 w-12 -translate-x-1/2 bg-[#243a33] [clip-path:polygon(0_0,100%_0,64%_62%,56%_100%,44%_100%,36%_62%)]"
-          />
+          {/* Foto no topo do cartão (contato.jpg) — imagem inteira, com moldura */}
+          <div className="p-3 sm:p-4">
+            <div className="w-full overflow-hidden rounded-[1.05rem] border border-[#E69B97]/50 bg-cream p-1.5 shadow-[0_12px_32px_rgba(6,18,14,0.16)] lg:mx-auto lg:max-w-[420px]">
+              <img
+                src="/contato.jpg"
+                alt="Renata Rodrigues de Souza"
+                loading="lazy"
+                decoding="async"
+                className="block h-auto w-full rounded-[0.7rem]"
+              />
+            </div>
+          </div>
 
           <div className="grid lg:grid-cols-[0.92fr_1.08fr]">
             {/* Painel esquerdo */}
@@ -62,15 +49,17 @@ export default function Contato() {
 
               <div className="relative z-10">
                 <div className="mb-4 flex items-center gap-3">
-                  <span className="h-px w-8 bg-brand-dark/60" />
-                  <span className="eyebrow text-brand-dark">
+                  <span className="h-px w-8 bg-[#E69B97]" />
+                  {/* cor sólida #E69B97 (era o marrom/degradê text-brand-dark) */}
+                  <span className="eyebrow" style={{ color: "#E69B97" }}>
                     Entre em contato
                   </span>
                 </div>
 
                 <h2 className="font-cinzel text-[1.7rem] leading-[1.15] tracking-tight text-[#173c36] sm:text-[2rem]">
                   Uma gestão escolar mais{" "}
-                  <span className="text-brand-dark">segura</span> começa aqui.
+                  {/* cor sólida #E69B97 (era text-brand-dark) */}
+                  <span style={{ color: "#E69B97" }}>segura</span> começa aqui.
                 </h2>
 
                 <p className="mt-4 max-w-md text-sm leading-[1.6] text-ink-soft sm:text-[15px]">
@@ -81,7 +70,10 @@ export default function Contato() {
               </div>
 
               <div className="relative z-10 mt-5">
-                <p className="font-hist text-xl text-brand-dark sm:text-[1.35rem]">
+                <p
+                  className="font-hist text-xl sm:text-[1.35rem]"
+                  style={{ color: "#E69B97" }}
+                >
                   Renata Rodrigues de Souza
                 </p>
                 <p className="mt-2 text-xs uppercase tracking-[0.16em] text-ink-soft">

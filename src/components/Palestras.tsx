@@ -202,7 +202,8 @@ export default function Palestras() {
         <div className="max-w-3xl">
           <div className="mb-3 flex items-center gap-3">
             <span className="h-px w-8 bg-gradient-to-r from-[#E69B97] to-[#c3a398]" />
-            <span className="eyebrow text-brand-dark">
+            {/* tag agora no mesmo rosa (CORAL #E69B97) do texto abaixo */}
+            <span className="eyebrow" style={{ color: CORAL }}>
               Livros &amp; Publicações
             </span>
           </div>
@@ -210,9 +211,8 @@ export default function Palestras() {
           <Reveal delay={80}>
             <h2 className="font-cinzel text-3xl leading-[1.15] tracking-tight text-ink sm:text-4xl">
               Conhecimento jurídico para quem{" "}
-              <span className="bg-gradient-to-r from-[#9c7a70] to-[#C97B76] bg-clip-text text-transparent">
-                vive a rotina escolar
-              </span>
+              {/* cor sólida (antes era gradiente com bg-clip-text) */}
+              <span style={{ color: CORAL }}>vive a rotina escolar</span>
             </h2>
           </Reveal>
 

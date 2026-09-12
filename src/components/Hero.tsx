@@ -18,7 +18,12 @@ const FOTO_MOBILE = "/DSC_5577.jpg";
 const FOTO_DESKTOP = "/hero.jpg";
 
 const ALTURA_FOTO = "h-[64svh] min-h-[360px] max-h-[660px]";
-const FOCO = "object-[56%_12%]";
+/* object-[56%_82%]  →  o 82% é o que sobe a Dra. no quadro.
+   Foi: 4% (cortava a testa) → 12% → 22% → 32% → 40% → 82% (agora).
+   MAIOR = sobe mais (aparece mais a parte de baixo da foto)
+   MENOR = desce    (aparece mais o topo / cabeça)
+   → 82% mostra quase o rodapé da foto (os pés da Dra.). */
+const FOCO = "object-[56%_82%]";
 
 /* Ajuste da foto no DESKTOP (≥1024px)
    LARGURA → largura da foto em relação à seção.

@@ -161,18 +161,23 @@ export default function Metodologia() {
       </div>
 
       <div className="relative z-10">
-        <SectionHeading
-          eyebrow="Como funciona"
-          align="center"
-          title={
-            <>
-              Uma metodologia clara, do{" "}
-              <span className="bg-gradient-to-r from-[#9c7a70] to-[#C97B76] bg-clip-text text-transparent">
-                diagnóstico à prevenção
-              </span>
-            </>
-          }
-        />
+        {/* eyebrow "Como funciona" agora no mesmo rosa (CORAL #E69B97)
+            do texto "diagnóstico à prevenção" logo abaixo */}
+        <div className="[&_.eyebrow]:text-[#E69B97]">
+          <SectionHeading
+            eyebrow="Como funciona"
+            align="center"
+            title={
+              <>
+                Uma metodologia clara, do{" "}
+                {/* cor sólida (antes era gradiente com bg-clip-text) */}
+                <span style={{ color: CORAL }}>
+                  diagnóstico à prevenção
+                </span>
+              </>
+            }
+          />
+        </div>
 
         <div className="relative mt-8 rounded-[2rem] border border-[#c3a398]/30 bg-[rgba(220,197,187,0.14)] px-5 py-6 shadow-[0_24px_70px_rgba(156,122,112,0.12)] backdrop-blur-[2px] sm:px-8 lg:px-10">
           <div className="pointer-events-none absolute left-0 right-0 top-[3.75rem] hidden lg:block">

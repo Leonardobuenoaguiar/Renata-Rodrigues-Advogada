@@ -3,6 +3,9 @@ import Section, { SectionHeading } from "./Section";
 import Reveal from "./Reveal";
 import BrandImage from "./BrandImage";
 
+/* Cor sólida usada nos destaques de texto (era gradiente) */
+const CORAL = "#E69B97";
+
 /* Ícone sólido preto e branco (estilo do anexo: silhueta com recortes) */
 const I = ({ d }: { d: string }) => (
   <svg
@@ -76,8 +79,9 @@ const areas = [
   {
     t: "Inclusão e Educação Especial",
     d: "Apoio jurídico ao PEI, PAEE e à acessibilidade.",
-    // pessoa de braços abertos (acessibilidade)
-    icone: "M12 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM3 6h18v2h-7v13h-2V8H3V6z",
+    // peça de quebra-cabeça (símbolo de inclusão e educação especial)
+    icone:
+      "M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5C13 2.12 11.88 1 10.5 1S8 2.12 8 3.5V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7 1.49 0 2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5c1.38 0 2.5-1.12 2.5-2.5S21.88 11 20.5 11z",
   },
   {
     t: "Mediação e Gestão de Conflitos",
@@ -122,14 +126,15 @@ export default function Atuacao() {
 
       <div className="relative">
         {/* Texto grande em cima, centralizado
-            (eyebrow "Atuação" em degradê rosé marrom via [&_.eyebrow]) */}
-        <div className="mx-auto max-w-2xl text-center [&_.eyebrow]:bg-gradient-to-r [&_.eyebrow]:from-[#9c7a70] [&_.eyebrow]:to-[#C97B76] [&_.eyebrow]:bg-clip-text [&_.eyebrow]:text-transparent">
+            (eyebrow "Atuação" em coral sólido — antes era degradê) */}
+        <div className="mx-auto max-w-2xl text-center [&_.eyebrow]:text-[#E69B97]">
           <SectionHeading
             eyebrow="Atuação"
             title={
               <>
                 Um leque completo para a{" "}
-                <span className="bg-gradient-to-r from-[#9c7a70] to-[#C97B76] bg-clip-text text-transparent">
+                {/* cor sólida (antes era gradiente com bg-clip-text) */}
+                <span style={{ color: CORAL }}>
                   gestão jurídica educacional
                 </span>
               </>
