@@ -1,6 +1,6 @@
 const paragraphs = [
   <>
-    Renata Rodrigues de Souza é advogada e consultora jurídica educacional, com
+    Renata Rodrigues de Souza é advogada, auditora e consultora jurídica educacional, com
     mais de 20 anos de experiência em ambientes corporativos, jurídicos e de
     auditoria.
   </>,
