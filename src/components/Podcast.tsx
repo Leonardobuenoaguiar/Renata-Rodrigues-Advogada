@@ -7,7 +7,13 @@ import Reveal from "./Reveal";
    o texto logo abaixo — tudo alinhado à esquerda.
 ------------------------------------------------------------------ */
 
-const PODCAST_INSTAGRAM = "https://www.instagram.com/emboacompanhiapodcast/";
+/* links oficiais do podcast "Em Boa Companhia" */
+const PODCAST_SPOTIFY =
+  "https://open.spotify.com/show/033ExO6uBkJ1nuWdc792EY?si=-B1EkBVQSACFsxbyP2fF-Q";
+const PODCAST_YOUTUBE =
+  "https://youtube.com/@emboacampanhiapodcast?si=Kt_ugG8qRDmjmZsn";
+/* se quiser recolocar algum dia:
+   https://www.instagram.com/emboacompanhiapodcast/ */
 
 /* paleta coral (harmoniza com o creme e o verde do site)
    ROSE      → coral principal: destaque do título, botão, fundo
@@ -33,6 +39,28 @@ const InstagramIcon = ({ className = "" }) => (
     <rect x="3" y="3" width="18" height="18" rx="5" />
     <circle cx="12" cy="12" r="4" />
     <circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" stroke="none" />
+  </svg>
+);
+
+const SpotifyIcon = ({ className = "" }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+    <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.59 14.42a.62.62 0 0 1-.85.21c-2.36-1.44-5.31-1.76-8.8-.96a.62.62 0 0 1-.29-1.21c3.83-.87 7.09-.5 9.73 1.12.3.18.4.57.21.84Zm1.22-2.75a.78.78 0 0 1-1.07.26c-2.7-1.66-6.8-2.14-9.99-1.17a.78.78 0 0 1-.45-1.49c3.62-1.1 8.13-.57 11.2 1.32.36.22.48.69.25 1.08Zm.13-2.86C14.53 8.49 9.29 8.32 6.07 9.3a.93.93 0 1 1-.54-1.79c3.69-1.12 9.53-.91 13.29 1.28a.93.93 0 0 1-.95 1.61Z" />
+  </svg>
+);
+
+const YouTubeIcon = ({ className = "" }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.8"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    aria-hidden="true"
+  >
+    <rect x="2" y="5" width="20" height="14" rx="4" />
+    <path d="M10.5 9.3l5 2.7-5 2.7z" fill="currentColor" stroke="none" />
   </svg>
 );
 
@@ -219,19 +247,33 @@ export default function Podcast() {
             </p>
           </Reveal>
 
-          {/* botão — fundo coral com texto verde-escuro (legível),
-              no hover o coral escurece e o texto passa a creme */}
+          {/* botões — Spotify (coral sólido) e YouTube (contorno coral).
+              No mobile cada um ocupa ~80% da largura e ficam empilhados;
+              do sm para cima ficam lado a lado. Altura mínima de 44px. */}
           <Reveal delay={220}>
-            <a
-              href={PODCAST_INSTAGRAM}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Abrir o perfil do podcast Em Boa Companhia no Instagram (abre em nova aba)"
-              className="mt-7 inline-flex min-h-11 items-center justify-center gap-2.5 rounded-[7px] bg-[#E69B97] px-8 py-3 text-[14px] font-semibold leading-none text-[#343b34] shadow-[0_6px_16px_-12px_rgba(230,155,151,.7)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#C97B76] hover:text-cream hover:shadow-[0_10px_20px_-12px_rgba(230,155,151,.75)]"
-            >
-              <InstagramIcon className="h-4 w-4" />
-              Ouça no Instagram
-            </a>
+            <div className="mt-7 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+              <a
+                href={PODCAST_SPOTIFY}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Ouvir o podcast Em Boa Companhia no Spotify (abre em nova aba)"
+                className="inline-flex min-h-11 w-[80%] items-center justify-center gap-2.5 rounded-[7px] bg-[#E69B97] px-8 py-3 text-[14px] font-semibold leading-none text-[#343b34] shadow-[0_6px_16px_-12px_rgba(230,155,151,.7)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#C97B76] hover:text-cream hover:shadow-[0_10px_20px_-12px_rgba(230,155,151,.75)] sm:w-auto"
+              >
+                <SpotifyIcon className="h-4 w-4" />
+                Ouvir no Spotify
+              </a>
+
+              <a
+                href={PODCAST_YOUTUBE}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Ouvir o podcast Em Boa Companhia no YouTube (abre em nova aba)"
+                className="inline-flex min-h-11 w-[80%] items-center justify-center gap-2.5 rounded-[7px] border border-[#E69B97] bg-transparent px-8 py-3 text-[14px] font-semibold leading-none text-[#9c7a70] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#C97B76] hover:bg-[#E69B97] hover:text-[#343b34] sm:w-auto"
+              >
+                <YouTubeIcon className="h-4 w-4" />
+                Ouvir no YouTube
+              </a>
+            </div>
           </Reveal>
         </div>
       </div>
