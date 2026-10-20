@@ -3,12 +3,13 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Atuacao from "./components/Atuacao";
 import Formacao from "./components/Formacao";
-import Servicos from "./components/Servicos";
+import Trajetoria from "./components/Trajetoria";
 import Diferencial from "./components/Diferencial";
 import Metodologia from "./components/Metodologia";
 import Palestras from "./components/Palestras";
 import Resultados from "./components/Resultados";
 import Podcast from "./components/Podcast"; // agora dentro de src/components/
+import Servicos from "./components/Servicos";
 import Artigos from "./components/Artigos";
 import Contato from "./components/Contato";
 import Footer from "./components/Footer";
@@ -31,12 +32,13 @@ export default function App() {
         <About />
         <Atuacao />
         <Formacao />
-        <Servicos />
+        <Trajetoria />
         <Diferencial />
         <Metodologia />
         <Palestras />
         <Resultados />
         <Podcast />
+        <Servicos />
         <Artigos />
         <Contato />
       </main>

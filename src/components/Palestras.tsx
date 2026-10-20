@@ -236,66 +236,15 @@ export default function Palestras() {
           className="mt-5 hidden text-xs font-medium uppercase tracking-[0.16em]"
           style={{ color: ROSE_TEXT }}
         >
-          Deslize para conhecer a trajetória e as publicações
+          Deslize para conhecer as publicações
         </p>
 
         {/* Painéis editoriais - MOBILE: coluna | DESKTOP (xl): grid como antes */}
-        <div className="mt-4 flex flex-col gap-4 xl:mx-0 xl:mt-8 xl:grid xl:grid-cols-[1fr_repeat(4,minmax(0,1fr))_1.12fr] xl:gap-3 xl:px-0">
-          {/* Experiência profissional */}
-          <Reveal className="w-full xl:w-auto xl:max-w-none">
-            <article className="flex h-full min-h-[410px] flex-col justify-center overflow-hidden rounded-[2rem] border border-[#c3a398]/30 bg-[#f6eee4] p-6 xl:p-4">
-              <div>
-                <p
-                  className="text-xs font-semibold uppercase tracking-[0.16em]"
-                  style={{ color: ROSE_TEXT }}
-                >
-                  Experiência
-                </p>
-                <p className="mt-4 text-xl leading-[1.45] text-ink xl:text-[15px] xl:leading-[1.45]">
-                  Atuação por{" "}
-                  <strong className="font-semibold">
-                    18 anos na maior empresa de energia da América Latina,
-                  </strong>{" "}
-                  em departamento jurídico e na área de auditoria interna com
-                  gestão de riscos.
-                </p>
-                <span className="mt-5 block h-px w-20 bg-gradient-to-r from-[#c3a398] to-[#E69B97]" />
-              </div>
-            </article>
-          </Reveal>
-
+        <div className="mt-4 flex flex-col gap-4 xl:mx-0 xl:mt-8 xl:grid xl:grid-cols-4 xl:gap-3 xl:px-0">
           {/* Somente as capas dos livros - agora 4 livros */}
           {publicacoes.map((item, index) => (
             <PublicationCard key={item.titulo} item={item} index={index} />
           ))}
-
-          {/* Propósito */}
-          <Reveal
-            delay={360}
-            className="w-full xl:w-auto xl:max-w-none"
-          >
-            <article className="flex h-full min-h-[410px] flex-col justify-center overflow-hidden rounded-[2rem] border border-[#c3a398]/30 bg-[#f6eee4] p-6 xl:p-4">
-              <div>
-                <p
-                  className="text-xs font-semibold uppercase tracking-[0.16em]"
-                  style={{ color: ROSE_TEXT }}
-                >
-                  Propósito
-                </p>
-                <p className="mt-4 text-base leading-[1.55] text-ink xl:text-[13px] xl:leading-[1.5]">
-                  A chegada da maturidade me trouxe incertezas e me fez lembrar
-                  minha carreira, o significado de sucesso e o impacto positivo
-                  que eu gostaria de causar com o meu conhecimento.
-                </p>
-                <span className="my-4 block h-px w-14 bg-gradient-to-r from-[#E69B97] to-[#c3a398]" />
-                <p className="text-base font-semibold leading-[1.5] text-brand-dark xl:text-[13px] xl:leading-[1.5]">
-                  Assim, numa decisão muito corajosa, pedi demissão e resolvi
-                  atuar profissionalmente com propósito na proteção jurídica de
-                  escolas.
-                </p>
-              </div>
-            </article>
-          </Reveal>
         </div>
 
         {/* Temas e chamada para contato */}
