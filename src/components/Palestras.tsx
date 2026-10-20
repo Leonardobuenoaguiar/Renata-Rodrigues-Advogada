@@ -53,6 +53,12 @@ const publicacoes = [
     ],
     painel: "bg-[#eadbd2]",
   },
+  {
+    titulo: "Escola em Pauta",
+    atuacao: "Autora",
+    capas: ["/capa-livro-escola-em-pauta.png"],
+    painel: "bg-[#ece8f0]",
+  },
 ];
 
 function BookCover({ sources, alt }) {
@@ -80,7 +86,7 @@ function PublicationCard({ item, index }) {
   return (
     <Reveal
       delay={120 + index * 80}
-      className="w-[82vw] max-w-[340px] shrink-0 snap-center xl:w-auto xl:max-w-none"
+      className="w-full xl:w-auto xl:max-w-none"
     >
       <article
         className={`relative flex h-full min-h-[410px] flex-col overflow-hidden rounded-[2rem] border border-[#c3a398]/30 ${item.painel}`}
@@ -110,7 +116,7 @@ function PublicationCard({ item, index }) {
           </div>
 
           <div className="my-4 flex flex-1 items-center justify-center">
-            <div className="aspect-[0.7] w-[72%] max-w-[185px] overflow-hidden rounded-[1.25rem] border border-ink/10 bg-cream shadow-[0_12px_30px_rgba(37,39,34,0.13)] transition-colors duration-300 hover:border-[#E69B97]">
+            <div className="aspect-[0.7] w-[72%] max-w-[185px] overflow-hidden rounded-[1.25rem] border border-ink/10 bg-cream shadow-[0_12px_30px_rgba(37,39,34,0.13)] transition-colors duration-300 hover:border-[#E69B97] xl:w-[92%] xl:max-w-[285px] xl:shadow-[0_14px_36px_rgba(37,39,34,0.16)]">
               <BookCover
                 sources={item.capas}
                 alt={`Capa do livro ${item.titulo}`}
@@ -225,17 +231,18 @@ export default function Palestras() {
           </Reveal>
         </div>
 
+        {/* REMOVIDO no mobile: instrução de "deslize" não faz sentido em modo coluna */}
         <p
-          className="mt-5 text-xs font-medium uppercase tracking-[0.16em] xl:hidden"
+          className="mt-5 hidden text-xs font-medium uppercase tracking-[0.16em]"
           style={{ color: ROSE_TEXT }}
         >
           Deslize para conhecer a trajetória e as publicações
         </p>
 
-        {/* Painéis editoriais */}
-        <div className="-mx-5 mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 [scrollbar-width:none] sm:-mx-8 sm:px-8 xl:mx-0 xl:mt-8 xl:grid xl:grid-cols-[1fr_repeat(3,minmax(0,1fr))_1.12fr] xl:gap-3 xl:overflow-visible xl:px-0 xl:pb-0 [&::-webkit-scrollbar]:hidden">
+        {/* Painéis editoriais - MOBILE: coluna | DESKTOP (xl): grid como antes */}
+        <div className="mt-4 flex flex-col gap-4 xl:mx-0 xl:mt-8 xl:grid xl:grid-cols-[1fr_repeat(4,minmax(0,1fr))_1.12fr] xl:gap-3 xl:px-0">
           {/* Experiência profissional */}
-          <Reveal className="w-[82vw] max-w-[340px] shrink-0 snap-center xl:w-auto xl:max-w-none">
+          <Reveal className="w-full xl:w-auto xl:max-w-none">
             <article className="flex h-full min-h-[410px] flex-col justify-center overflow-hidden rounded-[2rem] border border-[#c3a398]/30 bg-[#f6eee4] p-6 xl:p-4">
               <div>
                 <p
@@ -257,7 +264,7 @@ export default function Palestras() {
             </article>
           </Reveal>
 
-          {/* Somente as capas dos três livros */}
+          {/* Somente as capas dos livros - agora 4 livros */}
           {publicacoes.map((item, index) => (
             <PublicationCard key={item.titulo} item={item} index={index} />
           ))}
@@ -265,7 +272,7 @@ export default function Palestras() {
           {/* Propósito */}
           <Reveal
             delay={360}
-            className="w-[82vw] max-w-[340px] shrink-0 snap-center xl:w-auto xl:max-w-none"
+            className="w-full xl:w-auto xl:max-w-none"
           >
             <article className="flex h-full min-h-[410px] flex-col justify-center overflow-hidden rounded-[2rem] border border-[#c3a398]/30 bg-[#f6eee4] p-6 xl:p-4">
               <div>

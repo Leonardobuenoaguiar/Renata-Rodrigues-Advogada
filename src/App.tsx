@@ -7,6 +7,7 @@ import Servicos from "./components/Servicos";
 import Diferencial from "./components/Diferencial";
 import Metodologia from "./components/Metodologia";
 import Palestras from "./components/Palestras";
+import Resultados from "./components/Resultados";
 import Podcast from "./components/Podcast"; // agora dentro de src/components/
 import Artigos from "./components/Artigos";
 import Contato from "./components/Contato";
@@ -34,6 +35,7 @@ export default function App() {
         <Diferencial />
         <Metodologia />
         <Palestras />
+        <Resultados />
         <Podcast />
         <Artigos />
         <Contato />
