@@ -57,14 +57,14 @@ export default function Servicos() {
       tone="paper"
       className="relative overflow-hidden py-12 lg:py-16"
     >
-<div className="relative [&_.eyebrow]:text-[#E69B97]">
+<div className="relative [&_.eyebrow]:text-[#6E744E]">
   <SectionHeading
     eyebrow="Serviços"
     align="center"
     title={
       <>
         Soluções sob medida para a{" "}
-        <span style={{ color: "#E69B97" }}>rotina escolar</span>
+        <span style={{ color: "#6E744E" }}>rotina escolar</span>
       </>
 
     }

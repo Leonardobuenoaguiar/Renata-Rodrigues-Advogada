@@ -4,8 +4,15 @@ import Reveal from "./Reveal";
 import { site } from "../data/site";
 import { ArrowRight } from "./icons";
 
-const ROSE_TEXT = "#9c7a70";
-const CORAL = "#E69B97";
+/* Paleta do Fair Play 360º — azul-marinho + vermelho em tons pastel (sem rosé)
+   NAVY       #34446B → fundo da seção, títulos do modal e blocos escuros
+   RED        #C0504D → destaques sobre fundo claro: etiquetas, marcadores, números e botão
+   RED_BRIGHT #E4716C → o mesmo vermelho, um pouco mais claro, para aparecer bem
+                        em cima do azul-marinho ("360º", tracejados e anel)
+   Nas classes, as mesmas cores aparecem como bg-[#34446B], text-[#C0504D] etc. */
+const NAVY = "#34446B";
+const RED = "#C0504D";
+const RED_BRIGHT = "#E4716C";
 
 function FairPlayModal({ open, onClose }) {
   useEffect(() => {
@@ -37,17 +44,17 @@ function FairPlayModal({ open, onClose }) {
       />
 
       {/* container */}
-      <div className="relative flex max-h-[90vh] w-full max-w-[780px] flex-col overflow-hidden rounded-[2rem] border border-[#c3a398]/30 bg-cream shadow-[0_24px_60px_rgba(37,39,34,0.28)]">
+      <div className="relative flex max-h-[90vh] w-full max-w-[780px] flex-col overflow-hidden rounded-[2rem] border border-[#34446B]/15 bg-cream shadow-[0_24px_60px_rgba(37,39,34,0.28)]">
         {/* header sticky */}
-        <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-[#c3a398]/20 bg-cream px-6 py-5 sm:px-8 sm:py-6">
+        <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-[#34446B]/10 bg-cream px-6 py-5 sm:px-8 sm:py-6">
           <div>
             <p
               className="text-[11px] font-semibold uppercase tracking-[0.16em]"
-              style={{ color: CORAL }}
+              style={{ color: RED }}
             >
               Programa completo
             </p>
-            <h3 className="mt-1.5 font-cinzel text-xl leading-tight text-ink sm:text-2xl">
+            <h3 className="mt-1.5 font-cinzel text-xl leading-tight text-[#34446B] sm:text-2xl">
               Fair Play 360º
             </h3>
             <p className="mt-1 text-sm font-medium text-ink-soft">
@@ -57,7 +64,7 @@ function FairPlayModal({ open, onClose }) {
           <button
             onClick={onClose}
             aria-label="Fechar"
-            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#c3a398]/30 bg-white text-ink transition-colors hover:bg-ink hover:text-paper"
+            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#34446B]/20 bg-white text-[#34446B] transition-colors hover:bg-[#34446B] hover:text-white"
           >
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
               <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
@@ -69,7 +76,7 @@ function FairPlayModal({ open, onClose }) {
         <div className="overflow-y-auto px-6 py-6 sm:px-8 sm:py-7 [scrollbar-width:thin]">
           {/* O que aborda */}
           <div>
-            <h4 className="font-cinzel text-lg leading-tight text-ink">
+            <h4 className="font-cinzel text-lg leading-tight text-[#34446B]">
               O que o programa aborda?
             </h4>
             <ul className="mt-4 grid gap-3">
@@ -85,7 +92,7 @@ function FairPlayModal({ open, onClose }) {
                 <li key={item} className="flex gap-3 text-sm leading-relaxed text-ink">
                   <span
                     className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
-                    style={{ background: CORAL }}
+                    style={{ background: RED }}
                     aria-hidden="true"
                   />
                   <span>{item}</span>
@@ -95,8 +102,8 @@ function FairPlayModal({ open, onClose }) {
           </div>
 
           {/* 8 pilares */}
-          <div className="mt-8 rounded-[1.5rem] border border-[#c3a398]/25 bg-[rgba(220,197,187,0.18)] p-5 sm:p-6">
-            <h4 className="font-cinzel text-lg leading-tight text-ink">
+          <div className="mt-8 rounded-[1.5rem] border border-[#34446B]/10 bg-[#34446B]/[0.05] p-5 sm:p-6">
+            <h4 className="font-cinzel text-lg leading-tight text-[#34446B]">
               Os 8 pilares do programa
             </h4>
             <ol className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -116,7 +123,7 @@ function FairPlayModal({ open, onClose }) {
                 >
                   <span
                     className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
-                    style={{ background: CORAL }}
+                    style={{ background: RED }}
                   >
                     {idx + 1}
                   </span>
@@ -128,7 +135,7 @@ function FairPlayModal({ open, onClose }) {
 
           {/* Como funciona */}
           <div className="mt-8">
-            <h4 className="font-cinzel text-lg leading-tight text-ink">Como funciona?</h4>
+            <h4 className="font-cinzel text-lg leading-tight text-[#34446B]">Como funciona?</h4>
             <p className="mt-3 text-sm leading-[1.8] text-ink-soft">
               O programa envolve diagnóstico institucional, mapeamento de riscos, elaboração de políticas e protocolos, capacitação, ações educativas, simulações e monitoramento contínuo.
             </p>
@@ -141,14 +148,14 @@ function FairPlayModal({ open, onClose }) {
           </div>
 
           {/* Por que escolher */}
-          <div className="mt-8 rounded-[1.5rem] border border-[#c3a398]/25 bg-white p-5 sm:p-6">
-            <h4 className="font-cinzel text-lg leading-tight text-ink">
+          <div className="mt-8 rounded-[1.5rem] border border-[#34446B]/10 bg-white p-5 sm:p-6">
+            <h4 className="font-cinzel text-lg leading-tight text-[#34446B]">
               Por que escolher o Fair Play 360º?
             </h4>
             <p className="mt-3 text-sm leading-[1.8] text-ink-soft">
               O diferencial está na <strong className="font-semibold text-ink">prevenção, e não apenas na reação às crises</strong>. O programa auxilia organizações esportivas a identificar vulnerabilidades, definir responsabilidades, padronizar procedimentos, registrar decisões e fortalecer a proteção dos envolvidos.
             </p>
-            <div className="mt-5 rounded-2xl bg-ink px-5 py-4 text-center">
+            <div className="mt-5 rounded-2xl bg-[#34446B] px-5 py-4 text-center">
               <p className="text-sm font-semibold leading-relaxed text-paper">
                 Proteja pessoas. Fortaleça sua instituição.
               </p>
@@ -159,7 +166,7 @@ function FairPlayModal({ open, onClose }) {
           </div>
 
           {/* CTA no modal */}
-          <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-[#c3a398]/20 pt-6 sm:flex-row">
+          <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-[#34446B]/10 pt-6 sm:flex-row">
             <p className="text-sm font-medium text-ink">
               Quer implementar na sua instituição?
             </p>
@@ -167,7 +174,7 @@ function FairPlayModal({ open, onClose }) {
               href={site.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition-colors hover:bg-[#C97B76]"
+              className="group inline-flex items-center gap-2 rounded-full bg-[#C0504D] px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-[#34446B]"
             >
               Falar com a equipe
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -189,12 +196,16 @@ export default function Resultados() {
         tone="cream"
         className="relative isolate overflow-hidden py-10 lg:py-14"
       >
-        {/* backdrop suave */}
-        <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
-          <div className="absolute -right-48 top-[-6rem] h-[36rem] w-[36rem] rounded-full bg-[radial-gradient(circle,rgba(230,155,151,0.16)_0%,rgba(230,155,151,0.05)_45%,transparent_72%)] blur-2xl" />
-          <div className="absolute -left-56 bottom-[-10rem] h-[38rem] w-[38rem] rounded-full bg-[radial-gradient(circle,rgba(195,163,152,0.12)_0%,rgba(195,163,152,0.04)_46%,transparent_72%)] blur-2xl" />
-          <div className="absolute -right-32 top-[14%] hidden h-[26rem] w-[26rem] rounded-full border border-[#c3a398]/20 lg:block" />
-          <div className="absolute -right-16 top-[20%] hidden h-[18rem] w-[18rem] rounded-full border border-[#E69B97]/25 lg:block" />
+        {/* backdrop: fundo azul-marinho da seção + formas suaves */}
+        <div
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          style={{ backgroundColor: NAVY }}
+          aria-hidden="true"
+        >
+          <div className="absolute -right-48 top-[-6rem] h-[36rem] w-[36rem] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.07)_0%,rgba(255,255,255,0.02)_45%,transparent_72%)] blur-2xl" />
+          <div className="absolute -left-56 bottom-[-10rem] h-[38rem] w-[38rem] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.05)_0%,rgba(255,255,255,0.015)_46%,transparent_72%)] blur-2xl" />
+          <div className="absolute -right-32 top-[14%] hidden h-[26rem] w-[26rem] rounded-full border border-white/10 lg:block" />
+          <div className="absolute -right-16 top-[20%] hidden h-[18rem] w-[18rem] rounded-full border border-[#E4716C]/50 lg:block" />
         </div>
 
         <div className="relative z-10">
@@ -202,21 +213,20 @@ export default function Resultados() {
           <div className="mx-auto max-w-5xl">
             <Reveal>
               <div className="mb-3 flex items-center justify-center gap-3 lg:justify-start">
-                <span className="h-px w-8 bg-gradient-to-r from-[#E69B97] to-[#c3a398]" />
-                <span className="eyebrow" style={{ color: CORAL }}>
+                <span className="h-px w-8 bg-[#E4716C]" />
+                <span className="eyebrow" style={{ color: "#FFFFFF" }}>
                   Programa exclusivo
                 </span>
-                <span className="h-px w-8 bg-gradient-to-r from-[#c3a398] to-[#E69B97] lg:hidden" />
+                <span className="h-px w-8 bg-[#E4716C] lg:hidden" />
               </div>
             </Reveal>
 
             <Reveal delay={80}>
-              <h2 className="text-center font-cinzel text-[32px] font-normal leading-none tracking-tight text-ink sm:text-[42px] lg:text-left lg:text-[44px]">
-                FAIR PLAY <span style={{ color: CORAL }}>360º</span>
+              <h2 className="text-center font-cinzel text-[32px] font-normal leading-none tracking-tight text-white sm:text-[42px] lg:text-left lg:text-[44px]">
+                FAIR PLAY <span style={{ color: RED_BRIGHT }}>360º</span>
               </h2>
               <p
-                className="mt-3 text-center text-xs font-semibold uppercase tracking-[0.18em] sm:text-sm lg:text-left"
-                style={{ color: ROSE_TEXT }}
+                className="mt-3 text-center text-xs font-semibold uppercase tracking-[0.18em] text-white/80 sm:text-sm lg:text-left"
               >
                 Integridade, proteção e cultura de paz no esporte
               </p>
@@ -225,10 +235,10 @@ export default function Resultados() {
 
           {/* Card principal */}
           <Reveal delay={140}>
-            <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-[2rem] border border-[#c3a398]/30 bg-white shadow-[0_12px_32px_rgba(37,39,34,0.07)] lg:grid lg:grid-cols-[1.15fr_0.85fr]">
+            <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-[2rem] border border-white/10 bg-white shadow-[0_12px_32px_rgba(37,39,34,0.07)] lg:grid lg:grid-cols-[1.15fr_0.85fr]">
               {/* Esquerda - texto */}
               <div className="p-6 sm:p-8 lg:p-9">
-                <p className="text-[13px] font-semibold uppercase tracking-[0.14em]" style={{ color: CORAL }}>
+                <p className="text-[13px] font-semibold uppercase tracking-[0.14em]" style={{ color: RED }}>
                   Renata Souza Consultoria Jurídica e Auditoria
                 </p>
 
@@ -246,7 +256,7 @@ export default function Resultados() {
 
                 <button
                   onClick={() => setIsOpen(true)}
-                  className="group mt-6 inline-flex items-center gap-2 border-b border-ink pb-1 text-sm font-semibold tracking-wide text-ink transition-colors hover:border-[#E69B97] hover:text-[#C97B76]"
+                  className="group mt-6 inline-flex items-center gap-2 border-b border-[#C0504D] pb-1 text-sm font-semibold tracking-wide text-[#34446B] transition-colors hover:text-[#C0504D]"
                 >
                   Continuar lendo
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -254,13 +264,13 @@ export default function Resultados() {
               </div>
 
               {/* Direita - visual / pilares preview */}
-              <div className="relative flex flex-col justify-between overflow-hidden bg-[rgba(220,197,187,0.18)] p-6 sm:p-8 lg:p-7">
+              <div className="relative flex flex-col justify-between overflow-hidden bg-[#34446B]/[0.05] p-6 sm:p-8 lg:p-7">
                 <span
                   aria-hidden="true"
-                  className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[#E69B97]/20"
+                  className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[#34446B]/10"
                 />
                 <div className="relative">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: ROSE_TEXT }}>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: NAVY }}>
                     8 pilares
                   </p>
                   <ul className="mt-4 grid gap-2.5">
@@ -271,7 +281,7 @@ export default function Resultados() {
                       "Protocolos e canal seguro de escuta",
                     ].map((item) => (
                       <li key={item} className="flex items-center gap-3 text-sm text-ink">
-                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white text-[10px] font-bold text-ink shadow-sm">
+                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white text-[10px] font-bold text-[#C0504D] shadow-sm">
                           ✓
                         </span>
                         {item}
@@ -281,7 +291,7 @@ export default function Resultados() {
                   </ul>
                 </div>
 
-                <div className="relative mt-6 rounded-2xl bg-ink px-5 py-4">
+                <div className="relative mt-6 rounded-2xl bg-[#34446B] px-5 py-4">
                   <p className="text-sm font-medium leading-snug text-paper">Prevenção, e não só reação à crise.</p>
                   <p className="mt-1 text-xs leading-relaxed text-paper/70">Vulnerabilidades mapeadas, procedimentos padronizados.</p>
                 </div>
@@ -291,7 +301,7 @@ export default function Resultados() {
 
           {/* selo inferior */}
           <Reveal delay={200}>
-            <p className="mx-auto mt-6 max-w-5xl text-center text-xs leading-relaxed text-ink-soft lg:text-left">
+            <p className="mx-auto mt-6 max-w-5xl text-center text-xs leading-relaxed text-white/70 lg:text-left">
               Baseado na Lei Geral do Esporte, ECA, normas de combate ao racismo e bullying e LGPD.
             </p>
           </Reveal>

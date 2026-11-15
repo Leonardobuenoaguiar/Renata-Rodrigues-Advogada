@@ -121,7 +121,7 @@ export default function Header() {
       }`}
     >
       {/* Barra superior (light coral #E69B97) */}
-      <div className="h-8 w-full bg-[#E69B97] text-ink sm:h-10">
+      <div className="h-8 w-full bg-[#909677] text-ink sm:h-10">
         <div className="mx-auto flex h-full w-full max-w-[1400px] items-center justify-center px-5 sm:px-8 lg:px-10">
           <a
             href={site.whatsapp}

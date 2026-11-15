@@ -11,7 +11,7 @@ import { ArrowRight } from "./icons";
      pasta:  raiz de /public  →  /public/instagram
      nome:   as variações listadas em `arquivos`
      extensão: .png → .jpeg → .jpg
-   Se nenhuma combinação existir, mostra um círculo rosé com o glifo
+   Se nenhuma combinação existir, mostra um círculo verde com o glifo
    do Instagram (nunca aparece imagem quebrada).
 ------------------------------------------------------------------ */
 
@@ -102,10 +102,10 @@ function DestaqueItem({ destaque, index }: { destaque: Destaque; index: number }
         className="group flex flex-col items-center text-center"
       >
         {/* capa redonda, como no perfil do Instagram */}
-        <span className="relative block aspect-square w-full rounded-full border border-[#c3a398]/50 bg-cream p-[3px] transition-all duration-500 group-hover:-translate-y-1 group-hover:border-[#c3a398] group-hover:shadow-[0_14px_30px_-12px_rgba(156,122,112,0.6)]">
+        <span className="relative block aspect-square w-full rounded-full border border-[#909677]/50 bg-cream p-[3px] transition-all duration-500 group-hover:-translate-y-1 group-hover:border-[#909677] group-hover:shadow-[0_14px_30px_-12px_rgba(110,116,78,0.6)]">
           <span className="block h-full w-full overflow-hidden rounded-full">
             {esgotou ? (
-              <span className="flex h-full w-full items-center justify-center rounded-full bg-[linear-gradient(135deg,#dcc5bb_0%,#c3a398_55%,#38443b_100%)]">
+              <span className="flex h-full w-full items-center justify-center rounded-full bg-[linear-gradient(135deg,#c9cdb5_0%,#909677_55%,#38443b_100%)]">
                 <InstagramGlyph className="h-6 w-6 text-cream/85" />
               </span>
             ) : (
@@ -129,7 +129,7 @@ function DestaqueItem({ destaque, index }: { destaque: Destaque; index: number }
           </span>
         </span>
 
-        <span className="mt-2.5 font-mont text-[11px] font-semibold leading-[1.35] text-ink transition-colors duration-300 group-hover:text-[#9c7a70] sm:text-[12px]">
+        <span className="mt-2.5 font-mont text-[11px] font-semibold leading-[1.35] text-ink transition-colors duration-300 group-hover:text-[#6E744E] sm:text-[12px]">
           {destaque.nome}
         </span>
       </a>
@@ -138,7 +138,7 @@ function DestaqueItem({ destaque, index }: { destaque: Destaque; index: number }
 }
 
 /* ---------------- Fundo decorativo da seção ----------------
-   Tudo em rosé apagado, atrás do conteúdo (z-0) e sem clique.
+   Tudo em verde apagado (#909677), atrás do conteúdo (z-0) e sem clique.
 ------------------------------------------------------------ */
 function ArtigosBackdrop() {
   return (
@@ -147,25 +147,25 @@ function ArtigosBackdrop() {
       className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
     >
       {/* manchas de cor */}
-      <div className="absolute -right-44 -top-28 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,rgba(195,163,152,0.30)_0%,rgba(195,163,152,0.10)_46%,transparent_72%)] blur-2xl" />
-      <div className="absolute -left-48 bottom-[-12rem] h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(156,122,112,0.20)_0%,rgba(195,163,152,0.07)_45%,transparent_72%)] blur-2xl" />
-      <div className="absolute left-[38%] top-[42%] h-[20rem] w-[20rem] rounded-full bg-[radial-gradient(circle,rgba(220,197,187,0.34)_0%,transparent_70%)] blur-3xl" />
+      <div className="absolute -right-44 -top-28 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,rgba(144,150,119,0.30)_0%,rgba(144,150,119,0.10)_46%,transparent_72%)] blur-2xl" />
+      <div className="absolute -left-48 bottom-[-12rem] h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(110,116,78,0.20)_0%,rgba(144,150,119,0.07)_45%,transparent_72%)] blur-2xl" />
+      <div className="absolute left-[38%] top-[42%] h-[20rem] w-[20rem] rounded-full bg-[radial-gradient(circle,rgba(201,205,181,0.34)_0%,transparent_70%)] blur-3xl" />
 
       {/* anéis concêntricos */}
-      <div className="absolute -right-24 top-[6%] h-[19rem] w-[19rem] rounded-full border border-[#c3a398]/30" />
-      <div className="absolute -right-12 top-[12%] h-[13rem] w-[13rem] rounded-full border border-[#c3a398]/25" />
-      <div className="absolute -left-28 bottom-[4%] h-[15rem] w-[15rem] rounded-full border border-[#c3a398]/25" />
+      <div className="absolute -right-24 top-[6%] h-[19rem] w-[19rem] rounded-full border border-[#909677]/30" />
+      <div className="absolute -right-12 top-[12%] h-[13rem] w-[13rem] rounded-full border border-[#909677]/25" />
+      <div className="absolute -left-28 bottom-[4%] h-[15rem] w-[15rem] rounded-full border border-[#909677]/25" />
 
       {/* moldura de post, inclinada */}
-      <div className="absolute -left-24 top-[10%] h-[15rem] w-[15rem] rotate-[-12deg] rounded-[2.5rem] border border-[#c3a398]/25" />
-      <div className="absolute -left-16 top-[14%] h-[11rem] w-[11rem] rotate-[-12deg] rounded-[2rem] border border-[#c3a398]/20" />
+      <div className="absolute -left-24 top-[10%] h-[15rem] w-[15rem] rotate-[-12deg] rounded-[2.5rem] border border-[#909677]/25" />
+      <div className="absolute -left-16 top-[14%] h-[11rem] w-[11rem] rotate-[-12deg] rounded-[2rem] border border-[#909677]/20" />
 
       {/* grade de pontinhos */}
       <div
         className="absolute inset-y-0 right-0 w-40 opacity-60"
         style={{
           backgroundImage:
-            "radial-gradient(rgba(195,163,152,0.45) 1px, transparent 1px)",
+            "radial-gradient(rgba(144,150,119,0.45) 1px, transparent 1px)",
           backgroundSize: "14px 14px",
           maskImage: "linear-gradient(to left, black, transparent)",
           WebkitMaskImage: "linear-gradient(to left, black, transparent)",
@@ -175,7 +175,7 @@ function ArtigosBackdrop() {
         className="absolute inset-y-0 left-0 w-40 opacity-60"
         style={{
           backgroundImage:
-            "radial-gradient(rgba(195,163,152,0.45) 1px, transparent 1px)",
+            "radial-gradient(rgba(144,150,119,0.45) 1px, transparent 1px)",
           backgroundSize: "14px 14px",
           maskImage: "linear-gradient(to right, black, transparent)",
           WebkitMaskImage: "linear-gradient(to right, black, transparent)",
@@ -183,14 +183,14 @@ function ArtigosBackdrop() {
       />
 
       {/* traços finos */}
-      <div className="absolute inset-x-[8%] top-0 h-px bg-gradient-to-r from-transparent via-[#c3a398]/45 to-transparent" />
-      <div className="absolute inset-x-[8%] bottom-0 h-px bg-gradient-to-r from-transparent via-[#c3a398]/45 to-transparent" />
+      <div className="absolute inset-x-[8%] top-0 h-px bg-gradient-to-r from-transparent via-[#909677]/45 to-transparent" />
+      <div className="absolute inset-x-[8%] bottom-0 h-px bg-gradient-to-r from-transparent via-[#909677]/45 to-transparent" />
 
       {/* brilhos de quatro pontas */}
       <svg
         viewBox="0 0 40 40"
         fill="none"
-        className="absolute right-[12%] top-[16%] h-6 w-6 text-[#c3a398] opacity-50"
+        className="absolute right-[12%] top-[16%] h-6 w-6 text-[#909677] opacity-50"
       >
         <path
           d="M20 2v36M2 20h36M6 6l28 28M34 6L6 34"
@@ -202,7 +202,7 @@ function ArtigosBackdrop() {
       <svg
         viewBox="0 0 40 40"
         fill="none"
-        className="absolute bottom-[18%] left-[10%] h-4 w-4 text-[#c3a398] opacity-45"
+        className="absolute bottom-[18%] left-[10%] h-4 w-4 text-[#909677] opacity-45"
       >
         <path
           d="M20 2v36M2 20h36M6 6l28 28M34 6L6 34"
@@ -216,7 +216,7 @@ function ArtigosBackdrop() {
       <svg
         viewBox="0 0 260 170"
         fill="none"
-        className="absolute bottom-[-1.5rem] right-[6%] hidden w-[15rem] text-[#c3a398] opacity-[0.18] lg:block"
+        className="absolute bottom-[-1.5rem] right-[6%] hidden w-[15rem] text-[#909677] opacity-[0.18] lg:block"
       >
         <path
           d="M130 132C104 112 62 104 12 116V32C62 20 104 28 130 48V132Z"
@@ -261,21 +261,21 @@ export default function Artigos() {
         {/* Cabeçalho */}
         <Reveal>
           <div className="flex flex-col items-center text-center">
-            {/* Pílula do handle — texto em coral sólido
+            {/* Pílula do handle — texto em verde sólido (#6E744E)
                 (o glifo fica com cor fixa para continuar visível) */}
-            <span className="inline-flex items-center gap-2 rounded-full border border-[#c3a398]/50 bg-cream/70 px-3.5 py-1 font-hist text-[12px] tracking-[0.04em]">
-              <InstagramGlyph className="h-3 w-3 text-[#E69B97]" />
-              {/* coral sólido (antes era gradiente com bg-clip-text) */}
-              <span className="text-[#E69B97]">{INSTAGRAM_HANDLE}</span>
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#909677]/50 bg-cream/70 px-3.5 py-1 font-hist text-[12px] tracking-[0.04em]">
+              <InstagramGlyph className="h-3 w-3 text-[#6E744E]" />
+              {/* verde sólido (antes era gradiente com bg-clip-text) */}
+              <span className="text-[#6E744E]">{INSTAGRAM_HANDLE}</span>
             </span>
 
             <h2 className="mt-3.5 font-cinzel text-2xl leading-tight tracking-tight text-ink sm:text-3xl lg:text-[2rem]">
               Destaques do{" "}
-              {/* coral sólido (antes era gradiente com bg-clip-text) */}
-              <span className="text-[#E69B97]">Instagram</span>
+              {/* verde sólido (antes era gradiente com bg-clip-text) */}
+              <span className="text-[#6E744E]">Instagram</span>
             </h2>
 
-            <span className="mx-auto mt-3.5 block h-px w-10 bg-[#c3a398]" />
+            <span className="mx-auto mt-3.5 block h-px w-10 bg-[#909677]" />
 
             <p className="mt-3.5 max-w-md text-[13.5px] leading-[1.7] text-ink-soft sm:text-[14px]">
               Temas do dia a dia das escolas em formato curto. Toque em um

@@ -11,6 +11,22 @@ import Reveal from "./Reveal";
 const ROSE_TEXT = "#9c7a70";
 const CORAL = "#E69B97";
 
+/* Principais resultados e experiências — itens do card 01.
+   Para acrescentar, tirar ou reordenar, basta editar as linhas abaixo. */
+const resultados = [
+  "Implementação e estruturação do departamento jurídico da Eletrobras/ÁXIA em Florianópolis",
+  "Redução de 25% do passivo judicial, na gestão de aproximadamente 600 ações judiciais",
+  "Atuação na Auditoria Interna da mesma empresa, conduzindo avaliações de processos, riscos, controles internos e conformidade regulatória, preparação de Relatórios de Auditoria",
+  "Participação no grupo de trabalho que implementou metodologias ágeis em trabalhos de auditoria, contribuindo para análises mais eficientes e direcionadas aos riscos relevantes do negócio.",
+  "Membro da Comissão OAB nas escolas",
+  "Participação em Mentoria de Compliance anti-bullying",
+  "Criadora da Newsletter mensal “Escola em Pauta”® para trazer conteúdo informativo aos gestores escolares",
+  "Especialização em Compliance, Auditoria Interna, Direito Educacional e Proteção de Dados (LGPD).",
+  "Última fase da prova de certificação internacional CIA — Certified Internal Auditor.",
+  "Criadora do PROJETO FAIR PLAY 360 que leva cultura de paz e prevenção de violências no esporte",
+  "Coautoria em 3 publicações literárias nas áreas de Direito Digital, LGPD e Startups. Ed. Rumo Jurídico",
+];
+
 function TrajetoriaBackdrop() {
   return (
     <div
@@ -61,10 +77,11 @@ export default function Trajetoria() {
           </Reveal>
         </div>
 
-        {/* Cards Experiência + Propósito - MOBILE: coluna | DESKTOP: 2 colunas */}
-        <div className="mt-6 grid gap-4 lg:mt-8 lg:grid-cols-2">
-          {/* Experiência profissional */}
-          <Reveal className="w-full">
+        {/* Cards Resultados/Experiências + Propósito
+            MOBILE: coluna | DESKTOP: 3 colunas (a lista ocupa 2 e o Propósito, 1) */}
+        <div className="mt-6 grid gap-4 lg:mt-8 lg:grid-cols-3">
+          {/* Principais resultados e experiências */}
+          <Reveal className="w-full lg:col-span-2">
             <article className="relative flex h-full min-h-[240px] flex-col justify-center overflow-hidden rounded-[2rem] border border-[#c3a398]/30 bg-[#f6eee4] p-5 sm:p-6 lg:min-h-[260px] lg:p-7">
               <span
                 aria-hidden="true"
@@ -77,7 +94,7 @@ export default function Trajetoria() {
                     className="text-xs font-semibold uppercase tracking-[0.16em]"
                     style={{ color: ROSE_TEXT }}
                   >
-                    Experiência
+                    Principais resultados e experiências
                   </p>
                   <span
                     aria-hidden="true"
@@ -88,14 +105,19 @@ export default function Trajetoria() {
                   </span>
                 </div>
 
-                <p className="mt-4 text-base leading-[1.55] text-ink sm:text-lg sm:leading-[1.5]">
-                  Atuação por{" "}
-                  <strong className="font-semibold">
-                    18 anos na maior empresa de energia da América Latina,
-                  </strong>{" "}
-                  em departamento jurídico e na área de auditoria interna com
-                  gestão de riscos.
-                </p>
+                {/* lista: 1 coluna no celular; 2 colunas quando o card é largo o bastante */}
+                <ul className="mt-4 gap-x-8 text-sm leading-[1.6] text-ink sm:text-[15px] md:columns-2 lg:columns-1 xl:columns-2">
+                  {resultados.map((item) => (
+                    <li key={item} className="mb-2.5 flex break-inside-avoid gap-3 last:mb-0">
+                      <span
+                        aria-hidden="true"
+                        className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full"
+                        style={{ background: CORAL }}
+                      />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
 
                 <span className="mt-5 block h-px w-16 bg-gradient-to-r from-[#c3a398] to-[#E69B97]" />
               </div>

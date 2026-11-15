@@ -4,26 +4,27 @@ import Reveal from "./Reveal";
 import { site } from "../data/site";
 import { ArrowRight } from "./icons";
 
-/* ---------------- Paleta rosé da seção (mesma da Metodologia) ----------------
-   ROSE       #c3a398  → tom principal (decoração, bordas, traços)
-   ROSE_SOFT  #dcc5bb  → lavagem de fundo
-   ROSE_TEXT  #9c7a70  → versão escura do mesmo tom, usada em texto
-   CORAL      #E69B97  → secundária (acentos, shapes, gradientes) — mesma cor da barra top
-   CORAL_DEEP #C97B76  → versão escura do coral (hovers)
----------------------------------------------------------------------------- */
-const ROSE = "#c3a398";
-const ROSE_SOFT = "220,197,187";
-const ROSE_TEXT = "#9c7a70";
-const CORAL = "#E69B97";
-const CORAL_DEEP = "#C97B76";
+/* ---------- Paleta da seção: cores do post do Instagram (print) ----------
+   OLIVE       #4C5035  → verde-oliva do fundo do post (painel de destaque, formas, traços)
+   OLIVE_TEXT  #6E744E  → o mesmo verde, mais claro — usado em texto sobre fundo claro
+   SAGE        #A9B08D  → verde-sálvia (bordas, linhas e formas suaves) — usado direto nas classes
+   Rosé só como detalhe em cima do verde, como no post:
+   ROSE        #c3a398  → círculo no canto do painel verde — usado direto nas classes
+   BLUSH       #F4D6CB  → rosa claro do subtítulo do post (texto e hover sobre o verde)
+-------------------------------------------------------------------------- */
+const OLIVE = "#4C5035";
+const OLIVE_TEXT = "#6E744E";
+const BLUSH = "#F4D6CB";
 
 const temas = [
   "Letramento Jurídico sem juridiquês",
   "Autoridade Escolar com Segurança Jurídica",
-  "Bullying e Cyberbullying",
+  "Bullying e Cyberbullying, quando deixa de ser brincadeira e vira crime",
   "LGPD e ECA Digital",
-  "Inclusão e Educação Especial",
+  "As novas responsabilidades legais de famílias e escolas com a chegada do ECA Digital",
   "Saúde Mental Docente e NR-1",
+  "Racismo e Injúria racial em escolas",
+  "Uso de Vapes por alunos e responsabilização jurídica",
 ];
 
 const publicacoes = [
@@ -31,7 +32,7 @@ const publicacoes = [
     titulo: "Direito das Startups na Prática",
     atuacao: "Coautora e coordenadora",
     capas: ["/capa-livro-startups.png"],
-    painel: "bg-[#eef0d6]",
+    painel: "bg-[#e4e7d4]",
   },
   {
     titulo: "Vade Mecum de Direito das Startups",
@@ -41,7 +42,7 @@ const publicacoes = [
       "/capa-livro-vade-mecum.png",
       "/capa-livro-vademecum.png",
     ],
-    painel: "bg-[#f6eee4]",
+    painel: "bg-[#f3efe2]",
   },
   {
     titulo: "Vade Mecum de Direito Digital",
@@ -51,13 +52,13 @@ const publicacoes = [
       "/capa-livro-direito-digital.png",
       "/capa-livro-direitodigital.png",
     ],
-    painel: "bg-[#eadbd2]",
+    painel: "bg-[#ebe5d3]",
   },
   {
     titulo: "Escola em Pauta",
     atuacao: "Autora",
     capas: ["/capa-livro-escola-em-pauta.png"],
-    painel: "bg-[#ece8f0]",
+    painel: "bg-[#dee2cc]",
   },
 ];
 
@@ -89,16 +90,16 @@ function PublicationCard({ item, index }) {
       className="w-full xl:w-auto xl:max-w-none"
     >
       <article
-        className={`relative flex h-full min-h-[410px] flex-col overflow-hidden rounded-[2rem] border border-[#c3a398]/30 ${item.painel}`}
+        className={`relative flex h-full min-h-[410px] flex-col overflow-hidden rounded-[2rem] border border-[#4C5035]/15 ${item.painel}`}
       >
         {/* Formas apenas nos cantos, longe dos textos */}
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-[#E69B97]/30"
+          className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-[#A9B08D]/40"
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute -bottom-14 -left-14 h-32 w-32 rounded-full bg-[rgba(220,197,187,0.45)]"
+          className="pointer-events-none absolute -bottom-14 -left-14 h-32 w-32 rounded-full bg-[#4C5035]/15"
         />
 
         <div className="relative z-10 flex flex-1 flex-col px-5 pb-5 pt-4">
@@ -109,14 +110,14 @@ function PublicationCard({ item, index }) {
             <span
               aria-hidden="true"
               className="text-[10px] font-semibold tracking-[0.14em]"
-              style={{ color: ROSE_TEXT }}
+              style={{ color: OLIVE_TEXT }}
             >
               {String(index + 1).padStart(2, "0")}
             </span>
           </div>
 
           <div className="my-4 flex flex-1 items-center justify-center">
-            <div className="aspect-[0.7] w-[72%] max-w-[185px] overflow-hidden rounded-[1.25rem] border border-ink/10 bg-cream shadow-[0_12px_30px_rgba(37,39,34,0.13)] transition-colors duration-300 hover:border-[#E69B97] xl:w-[92%] xl:max-w-[285px] xl:shadow-[0_14px_36px_rgba(37,39,34,0.16)]">
+            <div className="aspect-[0.7] w-[72%] max-w-[185px] overflow-hidden rounded-[1.25rem] border border-ink/10 bg-cream shadow-[0_12px_30px_rgba(37,39,34,0.13)] transition-colors duration-300 hover:border-[#4C5035] xl:w-[92%] xl:max-w-[285px] xl:shadow-[0_14px_36px_rgba(37,39,34,0.16)]">
               <BookCover
                 sources={item.capas}
                 alt={`Capa do livro ${item.titulo}`}
@@ -127,7 +128,7 @@ function PublicationCard({ item, index }) {
           <div className="text-center">
             <p
               className="text-[9px] font-semibold uppercase tracking-[0.16em]"
-              style={{ color: ROSE_TEXT }}
+              style={{ color: OLIVE_TEXT }}
             >
               Produção jurídica
             </p>
@@ -147,16 +148,16 @@ function PalestrasBackdrop() {
       className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
       aria-hidden="true"
     >
-      <div className="absolute -right-56 top-[-10rem] h-[38rem] w-[38rem] rounded-full bg-[radial-gradient(circle,rgba(230,155,151,0.20)_0%,rgba(230,155,151,0.06)_46%,transparent_72%)] blur-2xl" />
-      <div className="absolute -left-60 bottom-[-14rem] h-[40rem] w-[40rem] rounded-full bg-[radial-gradient(circle,rgba(156,122,112,0.16)_0%,rgba(195,163,152,0.05)_45%,transparent_72%)] blur-2xl" />
+      <div className="absolute -right-56 top-[-10rem] h-[38rem] w-[38rem] rounded-full bg-[radial-gradient(circle,rgba(169,176,141,0.22)_0%,rgba(169,176,141,0.07)_46%,transparent_72%)] blur-2xl" />
+      <div className="absolute -left-60 bottom-[-14rem] h-[40rem] w-[40rem] rounded-full bg-[radial-gradient(circle,rgba(76,80,53,0.14)_0%,rgba(76,80,53,0.05)_45%,transparent_72%)] blur-2xl" />
 
-      <div className="absolute -right-36 top-[7%] h-[29rem] w-[29rem] rounded-full border border-[#c3a398]/25" />
-      <div className="absolute -right-20 top-[11%] h-[20rem] w-[20rem] rounded-full border border-[#E69B97]/30" />
+      <div className="absolute -right-36 top-[7%] h-[29rem] w-[29rem] rounded-full border border-[#4C5035]/15" />
+      <div className="absolute -right-20 top-[11%] h-[20rem] w-[20rem] rounded-full border border-[#A9B08D]/50" />
 
       <svg
         viewBox="0 0 520 420"
         fill="none"
-        className="absolute -right-20 top-10 hidden w-[25rem] text-[#c3a398] opacity-[0.14] sm:block sm:w-[30rem] lg:right-2 lg:top-6 lg:w-[34rem] lg:opacity-[0.17]"
+        className="absolute -right-20 top-10 hidden w-[25rem] text-[#4C5035] opacity-[0.10] sm:block sm:w-[30rem] lg:right-2 lg:top-6 lg:w-[34rem] lg:opacity-[0.12]"
       >
         <path
           d="M257 357C210 319 148 306 70 326L66 105C143 84 207 97 257 135V357Z"
@@ -190,7 +191,7 @@ function PalestrasBackdrop() {
         />
       </svg>
 
-      <div className="absolute inset-x-[7%] top-[47%] h-px bg-gradient-to-r from-transparent via-[#E69B97]/40 to-transparent" />
+      <div className="absolute inset-x-[7%] top-[47%] h-px bg-gradient-to-r from-transparent via-[#A9B08D]/50 to-transparent" />
     </div>
   );
 }
@@ -207,9 +208,9 @@ export default function Palestras() {
       <div className="relative z-10">
         <div className="max-w-3xl">
           <div className="mb-3 flex items-center gap-3">
-            <span className="h-px w-8 bg-gradient-to-r from-[#E69B97] to-[#c3a398]" />
-            {/* tag agora no mesmo rosa (CORAL #E69B97) do texto abaixo */}
-            <span className="eyebrow" style={{ color: CORAL }}>
+            <span className="h-px w-8 bg-gradient-to-r from-[#4C5035] to-[#A9B08D]" />
+            {/* tag no mesmo verde (OLIVE_TEXT #6E744E) do destaque do título */}
+            <span className="eyebrow" style={{ color: OLIVE_TEXT }}>
               Livros &amp; Publicações
             </span>
           </div>
@@ -218,7 +219,7 @@ export default function Palestras() {
             <h2 className="font-cinzel text-3xl leading-[1.15] tracking-tight text-ink sm:text-4xl">
               Conhecimento jurídico para quem{" "}
               {/* cor sólida (antes era gradiente com bg-clip-text) */}
-              <span style={{ color: CORAL }}>vive a rotina escolar</span>
+              <span style={{ color: OLIVE_TEXT }}>vive a rotina escolar</span>
             </h2>
           </Reveal>
 
@@ -234,7 +235,7 @@ export default function Palestras() {
         {/* REMOVIDO no mobile: instrução de "deslize" não faz sentido em modo coluna */}
         <p
           className="mt-5 hidden text-xs font-medium uppercase tracking-[0.16em]"
-          style={{ color: ROSE_TEXT }}
+          style={{ color: OLIVE_TEXT }}
         >
           Deslize para conhecer as publicações
         </p>
@@ -248,24 +249,24 @@ export default function Palestras() {
         </div>
 
         {/* Temas e chamada para contato */}
-        <div className="mt-8 overflow-hidden rounded-[2rem] border border-[#c3a398]/30 bg-[rgba(220,197,187,0.16)] lg:mt-10 lg:grid lg:grid-cols-[0.72fr_1.28fr]">
-          <Reveal className="relative flex flex-col justify-between overflow-hidden bg-[rgba(220,197,187,0.38)] p-6 sm:p-7">
+        <div className="mt-8 overflow-hidden rounded-[2rem] border border-[#4C5035]/15 bg-[rgba(169,176,141,0.12)] lg:mt-10 lg:grid lg:grid-cols-[0.72fr_1.28fr]">
+          <Reveal className="relative flex flex-col justify-between overflow-hidden bg-[#4C5035] p-6 sm:p-7">
             <span
               aria-hidden="true"
-              className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[#E69B97]/25"
+              className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[#c3a398]/70"
             />
 
             <div>
               <p
                 className="text-xs font-semibold uppercase tracking-[0.16em]"
-                style={{ color: ROSE_TEXT }}
+                style={{ color: BLUSH }}
               >
                 Formação prática
               </p>
-              <h3 className="mt-3 font-cinzel text-2xl leading-tight text-ink sm:text-3xl">
+              <h3 className="mt-3 font-cinzel text-2xl leading-tight text-cream sm:text-3xl">
                 Temas para equipes educacionais
               </h3>
-              <p className="mt-4 max-w-md text-sm leading-[1.8] text-ink-soft">
+              <p className="mt-4 max-w-md text-sm leading-[1.8] text-cream/80">
                 Formação que protege e orienta a equipe no dia a dia.
               </p>
             </div>
@@ -274,7 +275,8 @@ export default function Palestras() {
               href={site.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="group mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition-colors duration-300 hover:bg-[#C97B76]"
+              className="group mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-cream px-6 py-3 text-sm font-medium transition-colors duration-300 hover:bg-[#F4D6CB]"
+              style={{ color: OLIVE }}
             >
               Solicitar uma palestra
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -290,7 +292,7 @@ export default function Palestras() {
                 >
                   <span
                     className="mt-0.5 text-xs font-medium"
-                    style={{ color: ROSE_TEXT }}
+                    style={{ color: OLIVE_TEXT }}
                     aria-hidden="true"
                   >
                     {String(index + 1).padStart(2, "0")}

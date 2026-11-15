@@ -1,40 +1,20 @@
 import Section, { SectionHeading } from "./Section";
 import Reveal from "./Reveal";
 
-/* ---------------- Paleta rosé desta seção (tons do print) ----------------
-   ROSE       #c3a398  → tom principal (decoração, bordas, traços)
-   ROSE_SOFT  #dcc5bb  → lavagem de fundo
-   ROSE_TEXT  #9c7a70  → versão escura do mesmo tom, usada em texto
-   CORAL      #E69B97  → secundária (acentos, shapes, gradientes) — mesma cor da barra top
-   CORAL_DEEP #C97B76  → versão escura do coral (hovers, gradientes de texto)
-------------------------------------------------------------------------- */
-const ROSE = "195,163,152";
-const ROSE_SOFT = "220,197,187";
-const ROSE_TEXT = "#9c7a70";
-const CORAL = "#E69B97";
-const CORAL_DEEP = "#C97B76";
+/* ------- Cores desta seção — fundo claro, com as cores das outras seções -------
+   verde  #909677  → o verde do site: bordas, tracinhos, painel, ramos e formas do fundo
+   verde escuro #6E744E → eyebrow (o mesmo de Palestras; o #909677 é claro demais para letra pequena)
+   creme  #F7EEE4  → cards e número dentro do selo
+   ink (tema)      → título, selo do número e título dos cards
+   ink-soft (tema) → palavra-chave de cada card
+   Sem rosé nem coral.
+---------------------------------------------------------------------------------- */
 
 const steps = [
-  {
-    n: "01",
-    t: "Diagnosticar",
-    d: "Identificar riscos, fragilidades e necessidades da instituição.",
-  },
-  {
-    n: "02",
-    t: "Orientar",
-    d: "Apresentar soluções jurídicas adequadas à sua realidade.",
-  },
-  {
-    n: "03",
-    t: "Estruturar",
-    d: "Criar políticas, documentos, protocolos e processos.",
-  },
-  {
-    n: "04",
-    t: "Prevenir",
-    d: "Reduzir riscos e aumentar a segurança jurídica da escola.",
-  },
+  { n: "01", t: "Diagnóstico", d: "Conhecer" },
+  { n: "02", t: "Avaliação", d: "Identificar riscos" },
+  { n: "03", t: "Adequação", d: "Estruturar" },
+  { n: "04", t: "Monitoramento", d: "Acompanhar" },
 ];
 
 function BotanicalBranch({ className = "" }) {
@@ -143,78 +123,65 @@ export default function Metodologia() {
       tone="paper"
       className="relative isolate overflow-hidden py-10 lg:py-12"
     >
-      {/* Fundo decorativo suave — rosé com acentos coral */}
+      {/* Fundo claro, como estava — os desenhos é que ficam no verde do site */}
       <div
         className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
         aria-hidden="true"
       >
-        <div className="absolute -left-52 top-12 h-[32rem] w-[32rem] rounded-full bg-[radial-gradient(circle,rgba(230,155,151,0.20)_0%,rgba(230,155,151,0.06)_42%,transparent_72%)] blur-xl" />
-        <div className="absolute -right-56 bottom-[-12rem] h-[38rem] w-[38rem] rounded-full bg-[radial-gradient(circle,rgba(156,122,112,0.16)_0%,rgba(195,163,152,0.06)_46%,transparent_72%)] blur-2xl" />
+        <div className="absolute -left-52 top-12 h-[32rem] w-[32rem] rounded-full bg-[radial-gradient(circle,rgba(144,150,119,0.22)_0%,rgba(144,150,119,0.07)_42%,transparent_72%)] blur-xl" />
+        <div className="absolute -right-56 bottom-[-12rem] h-[38rem] w-[38rem] rounded-full bg-[radial-gradient(circle,rgba(144,150,119,0.18)_0%,rgba(144,150,119,0.06)_46%,transparent_72%)] blur-2xl" />
 
-        <div className="absolute -left-40 top-[18%] h-[27rem] w-[27rem] rounded-full border border-[#c3a398]/25" />
-        <div className="absolute -left-24 top-[24%] h-[18rem] w-[18rem] rounded-full border border-[#E69B97]/30" />
+        <div className="absolute -left-40 top-[18%] h-[27rem] w-[27rem] rounded-full border border-[#909677]/30" />
+        <div className="absolute -left-24 top-[24%] h-[18rem] w-[18rem] rounded-full border border-[#909677]/45" />
 
-        <BotanicalBranch className="absolute -right-8 top-4 w-[19rem] text-[#E69B97] opacity-[0.19] sm:w-[24rem] lg:right-2 lg:top-0 lg:w-[29rem] lg:opacity-[0.24]" />
-        <BotanicalBranch className="absolute -bottom-40 -left-20 w-[18rem] -scale-x-100 rotate-12 text-[#c3a398] opacity-[0.13] sm:w-[22rem] lg:w-[26rem]" />
+        <BotanicalBranch className="absolute -right-8 top-4 w-[19rem] text-[#909677] opacity-[0.4] sm:w-[24rem] lg:right-2 lg:top-0 lg:w-[29rem] lg:opacity-[0.5]" />
+        <BotanicalBranch className="absolute -bottom-40 -left-20 w-[18rem] -scale-x-100 rotate-12 text-[#909677] opacity-[0.28] sm:w-[22rem] lg:w-[26rem]" />
 
-        <div className="absolute inset-x-[8%] top-1/2 h-px bg-gradient-to-r from-transparent via-[#E69B97]/40 to-transparent" />
+        <div className="absolute inset-x-[8%] top-1/2 h-px bg-gradient-to-r from-transparent via-[#909677]/50 to-transparent" />
       </div>
 
       <div className="relative z-10">
-        {/* eyebrow "Como funciona" agora no mesmo rosa (CORAL #E69B97)
-            do texto "diagnóstico à prevenção" logo abaixo */}
-        <div className="[&_.eyebrow]:text-[#E69B97]">
+        {/* eyebrow "Como funciona" em verde escuro (#6E744E); título só "Metodologia" */}
+        <div className="[&_.eyebrow]:text-[#6E744E]">
           <SectionHeading
             eyebrow="Como funciona"
             align="center"
-            title={
-              <>
-                Uma metodologia clara, do{" "}
-                {/* cor sólida (antes era gradiente com bg-clip-text) */}
-                <span style={{ color: CORAL }}>
-                  diagnóstico à prevenção
-                </span>
-              </>
-            }
+            title="Metodologia"
           />
         </div>
 
-        <div className="relative mt-8 rounded-[2rem] border border-[#c3a398]/30 bg-[rgba(220,197,187,0.14)] px-5 py-6 shadow-[0_24px_70px_rgba(156,122,112,0.12)] backdrop-blur-[2px] sm:px-8 lg:px-10">
-          <div className="pointer-events-none absolute left-0 right-0 top-[3.75rem] hidden lg:block">
-            <div className="mx-auto h-px w-[76%] bg-gradient-to-r from-[#c3a398]/50 via-[#E69B97]/50 to-[#c3a398]/50" />
-          </div>
+        {/* Passos em cards: selo escuro com o número (como nas outras seções),
+            tracinho verde, título e palavra-chave.
+            Celular: 1 por linha (selo à esquerda) · sm: 2×2 · lg: 4 lado a lado */}
+        <div className="mt-8 rounded-[2rem] border border-[#909677]/40 bg-[#909677]/[0.14] p-3 shadow-[0_24px_70px_rgba(37,39,34,0.08)] backdrop-blur-[2px] sm:p-5 lg:p-6">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
+            {steps.map((s, i) => (
+              <Reveal key={s.n} delay={i * 120}>
+                <div className="group flex h-full items-center gap-3 rounded-2xl border border-[#909677]/40 bg-[#F7EEE4] px-4 py-4 text-left shadow-[0_8px_24px_rgba(37,39,34,0.08)] transition-all duration-500 hover:-translate-y-1 hover:border-[#909677] hover:shadow-[0_12px_28px_rgba(37,39,34,0.18)] sm:flex-col sm:justify-center sm:gap-0 sm:py-8 sm:text-center">
+                  {/* selo escuro redondo com o número, como nos cartões das outras seções */}
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-ink text-[13px] font-semibold tracking-[0.06em] text-[#F7EEE4] sm:h-12 sm:w-12 sm:text-sm">
+                    {s.n}
+                  </span>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-            {steps.map((s, i) => {
-              const isCoral = i % 2 === 1;
+                  {/* tracinho entre o selo e o texto (vertical no celular) */}
+                  <span
+                    aria-hidden="true"
+                    className="h-9 w-px shrink-0 bg-[#909677] transition-all duration-500 sm:my-4 sm:h-px sm:w-8 sm:group-hover:w-12"
+                  />
 
-              return (
-                <Reveal key={s.n} delay={i * 120}>
-                  <div className="group relative text-center lg:text-left">
-                    <div
-                      className={`relative z-10 mx-auto flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border bg-cream/90 shadow-[0_8px_24px_rgba(156,122,112,0.10)] backdrop-blur-sm transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-[0_12px_28px_rgba(156,122,112,0.28)] lg:mx-0 ${
-                        isCoral
-                          ? "border-[#E69B97]/70 group-hover:border-[#E69B97] group-hover:bg-[#E69B97]"
-                          : "border-[#c3a398]/70 group-hover:border-[#c3a398] group-hover:bg-[#c3a398]"
-                      }`}
-                    >
-                      <span
-                        className="font-cinzel text-lg transition-colors duration-500 group-hover:text-cream"
-                        style={{ color: ROSE_TEXT }}
-                      >
-                        {s.n}
-                      </span>
-                    </div>
-                    <h3 className="mt-6 font-cinzel text-xl tracking-tight text-ink">
+                  <div className="min-w-0">
+                    {/* no celular a fonte acompanha a largura da tela para
+                        "Monitoramento" caber inteiro, sem quebrar no meio */}
+                    <h3 className="font-cinzel text-[length:clamp(0.8125rem,4.6vw,1.125rem)] leading-7 tracking-tight text-ink sm:text-lg">
                       {s.t}
                     </h3>
-                    <p className="mx-auto mt-3 max-w-[16rem] text-[15px] leading-[1.8] text-ink-soft lg:mx-0">
+                    <p className="text-[15px] leading-snug text-ink-soft sm:mt-1">
                       {s.d}
                     </p>
                   </div>
-                </Reveal>
-              );
-            })}
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </div>

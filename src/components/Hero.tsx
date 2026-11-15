@@ -15,7 +15,7 @@ import { ArrowRight } from "./icons";
 /* Arquivos: um para o mobile/tablet e outro para o desktop.
    Os dois precisam estar na pasta public. */
 const FOTO_MOBILE = "/DSC_5577.jpg";
-const FOTO_DESKTOP = "/hero.jpg";
+const FOTO_DESKTOP = "/DSC_5577.jpg";
 
 const ALTURA_FOTO = "h-[64svh] min-h-[360px] max-h-[660px]";
 /* object-[56%_82%]  →  o 82% é o que sobe a Dra. no quadro.
@@ -34,6 +34,28 @@ const FOCO = "object-[56%_82%]";
              Ex.: lg:left-[62%] atual · lg:left-[70%] mais à direita ainda */
 const LARGURA_FOTO_DESKTOP = "lg:w-[78%]";
 const CENTRO_FOTO_DESKTOP = "lg:left-[62%]";
+
+/* DESKTOP: FOCO vertical da foto — é o ajuste principal de altura
+   (o mobile não usa isto; lá vale o FOCO de cima).
+   O 2º número é o ponto da foto que fica alinhado com o quadro:
+   MAIOR = a Dra. SOBE (aparece mais a parte de baixo da foto)
+   MENOR = a Dra. desce.
+   Foi: 2% (muito para baixo) → 18% → 23% (agora).
+   Ex.: lg:object-[center_28%] sobe mais · lg:object-[center_18%] desce um pouco
+   Este ajuste acompanha o tamanho da tela: em monitor largo a foto
+   fica com mais zoom e ele compensa sozinho. */
+const FOCO_DESKTOP = "lg:object-[center_35%]";
+
+/* DESKTOP: quanto a foto SOBE dentro do quadro (o mobile não usa isto).
+   Os dois números andam juntos: se o primeiro é -12%, o segundo é 112%.
+   MAIOR = a Dra. sobe mais (a % é da altura do quadro da foto).
+   É um empurrão fixo, somado ao FOCO_DESKTOP acima (prefira mexer no FOCO).
+   Ex.: sem subir → "lg:top-[0%] lg:h-[100%]"
+        um pouco  → "lg:top-[-12%] lg:h-[112%]"   (atual: uns 70px)
+        bem mais  → "lg:top-[-20%] lg:h-[120%]"
+   A foto fica um pouco mais alta que o quadro e a sobra de cima é
+   cortada: não aparece faixa vazia embaixo e o zoom não muda. */
+const SUBIR_FOTO_DESKTOP = "lg:top-[-12%] lg:h-[112%]";
 
 /* Desktop: "janela" que abre o véu creme sobre o rosto da Dra.
    x/y   → centro do rosto em % da seção (a foto ocupa 78% da largura,
@@ -84,17 +106,18 @@ export default function Hero() {
           alt=""
           loading="eager"
           decoding="async"
-          className="absolute inset-0 h-full w-full origin-top scale-[1.02] object-cover object-[65%_5%] blur-[3px] sm:object-[62%_5%] lg:object-[center_2%]"
+          className={`absolute inset-0 h-full w-full origin-top scale-[1.02] object-cover object-[65%_5%] blur-[3px] sm:object-[62%_5%] ${FOCO_DESKTOP} ${SUBIR_FOTO_DESKTOP}`}
         />
 
-        {/* Foto principal alinhada pelo topo para não cortar o rosto */}
+        {/* Foto principal alinhada pelo topo para não cortar o rosto
+            (SUBIR_FOTO_DESKTOP é o que sobe a foto no quadro) */}
         <img
           src={FOTO_DESKTOP}
           alt=""
           loading="eager"
           fetchPriority="high"
           decoding="async"
-          className={`absolute inset-y-0 h-full w-full max-w-none -translate-x-1/2 object-cover object-[65%_5%] sm:object-[62%_5%] lg:object-[center_2%] lg:[-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_5%,black_95%,transparent_100%)] lg:[mask-image:linear-gradient(to_right,transparent_0%,black_5%,black_95%,transparent_100%)] ${CENTRO_FOTO_DESKTOP} ${LARGURA_FOTO_DESKTOP}`}
+          className={`absolute inset-y-0 h-full w-full max-w-none -translate-x-1/2 object-cover object-[65%_5%] sm:object-[62%_5%] ${FOCO_DESKTOP} lg:[-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_5%,black_95%,transparent_100%)] lg:[mask-image:linear-gradient(to_right,transparent_0%,black_5%,black_95%,transparent_100%)] ${CENTRO_FOTO_DESKTOP} ${LARGURA_FOTO_DESKTOP} ${SUBIR_FOTO_DESKTOP}`}
         />
 
         {/* Mancha clara central, como na imagem de referência
