@@ -18,7 +18,7 @@ const resultados = [
   "Redução de 25% do passivo judicial, na gestão de aproximadamente 600 ações judiciais",
   "Atuação na Auditoria Interna da mesma empresa, conduzindo avaliações de processos, riscos, controles internos e conformidade regulatória, preparação de Relatórios de Auditoria",
   "Participação no grupo de trabalho que implementou metodologias ágeis em trabalhos de auditoria, contribuindo para análises mais eficientes e direcionadas aos riscos relevantes do negócio.",
-  "Membro da Comissão OAB nas escolas",
+  "Membro da Associação Brasileira de Direito Educacional.",
   "Participação em Mentoria de Compliance anti-bullying",
   "Criadora da Newsletter mensal “Escola em Pauta”® para trazer conteúdo informativo aos gestores escolares",
   "Especialização em Compliance, Auditoria Interna, Direito Educacional e Proteção de Dados (LGPD).",

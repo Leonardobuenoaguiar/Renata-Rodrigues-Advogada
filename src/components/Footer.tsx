@@ -120,7 +120,7 @@ export default function Footer() {
               <p className="relative top-8 mt-1.5 hidden text-[10px] leading-relaxed tracking-[0.02em] text-paper/[0.45] lg:block">
                 Desenvolvido por{" "}
                 <a
-                  href="https://www.linkedin.com/in/leonardo-bueno-de-aguiar-b8062a212/"
+                  href="www.linkedin.com/in/leonardo-aguiar-b8062a212"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-paper/[0.58] underline decoration-paper/20 underline-offset-2 transition-colors hover:text-paper/80"
@@ -144,7 +144,7 @@ export default function Footer() {
             <p className="relative top-3 -mt-3 text-center text-[9px] leading-relaxed tracking-[0.02em] text-paper/[0.45] sm:text-[10px] lg:hidden">
               Desenvolvido por{" "}
               <a
-                href="https://www.linkedin.com/in/leonardo-bueno-de-aguiar-b8062a212/"
+                href="www.linkedin.com/in/leonardo-aguiar-b8062a212"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-paper/[0.58] underline decoration-paper/20 underline-offset-2 transition-colors hover:text-paper/80"

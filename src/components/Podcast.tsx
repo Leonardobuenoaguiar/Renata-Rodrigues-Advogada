@@ -1,50 +1,18 @@
-import type { ReactNode } from "react";
+"use client";
+
+import { useState, type ReactNode } from "react";
 import Reveal from "./Reveal";
 
-/* ------------------------------------------------------------------
-   SECTION PODCAST — "Em Boa Companhia"
-   Cabeçalho no mesmo padrão das outras seções (igual ao de Palestras):
-   tracejado + eyebrow e título font-cinzel em ink, direto sobre o verde.
-   Abaixo, o texto em três cartões creme pequenos (selo escuro + texto),
-   no estilo da seção "Nosso diferencial", e por fim os botões.
-   Cores iguais às da seção "Nosso diferencial" (verde, creme e ink).
------------------------------------------------------------------- */
-
-/* links oficiais do podcast "Em Boa Companhia" */
 const PODCAST_SPOTIFY =
   "https://open.spotify.com/show/033ExO6uBkJ1nuWdc792EY?si=-B1EkBVQSACFsxbyP2fF-Q";
 const PODCAST_YOUTUBE =
   "https://youtube.com/@emboacampanhiapodcast?si=Kt_ugG8qRDmjmZsn";
-/* se quiser recolocar algum dia:
-   https://www.instagram.com/emboacompanhiapodcast/ */
+const PODCAST_VIDEO_ID = "a1ZfPuw0joM";
+// Coloque doutorarenata.png na pasta public do projeto.
+const PODCAST_VIDEO_THUMB = "/doutorarenata.png";
 
-/* cores da seção — as mesmas do print da seção "Nosso diferencial"
-   verde  #909677  → fundo da seção
-   creme  #F7EEE4  → cartões, botão claro, letra do botão escuro e desenhos do fundo
-   ink (tema)      → eyebrow, título, selos dos cartões e botão escuro
-   ink-soft (tema) → texto dos cartões
-   Não há mais coral nesta seção.                                          */
-
-/* alturas (em px) das barrinhas de áudio que decoram o fundo */
 const ONDA_A = [10, 18, 8, 26, 14, 22, 12, 30, 16, 10, 24, 12];
 const ONDA_B = [14, 24, 10, 18, 30, 12, 20, 8, 26, 14, 10, 22];
-
-const InstagramIcon = ({ className = "" }) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.8"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-    aria-hidden="true"
-  >
-    <rect x="3" y="3" width="18" height="18" rx="5" />
-    <circle cx="12" cy="12" r="4" />
-    <circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" stroke="none" />
-  </svg>
-);
 
 const SpotifyIcon = ({ className = "" }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
@@ -68,7 +36,6 @@ const YouTubeIcon = ({ className = "" }) => (
   </svg>
 );
 
-/* ícones dos selos dos cartões (decorativos) */
 const CoffeeIcon = ({ className = "" }) => (
   <svg
     viewBox="0 0 24 24"
@@ -122,8 +89,6 @@ const MicIcon = ({ className = "" }) => (
   </svg>
 );
 
-/* cartão pequeno, no estilo dos cartões da seção "Nosso diferencial":
-   selo escuro com ícone, um traço fino e o texto */
 function Cartao({ icone, children }: { icone: ReactNode; children: ReactNode }) {
   return (
     <article className="flex h-full flex-col rounded-[7px] bg-[#F7EEE4] p-6 shadow-[0_6px_14px_rgba(37,39,34,0.22)]">
@@ -138,7 +103,6 @@ function Cartao({ icone, children }: { icone: ReactNode; children: ReactNode }) 
   );
 }
 
-/* barrinhas de waveform — decorativo */
 function Onda({ alturas, className = "" }: { alturas: number[]; className?: string }) {
   return (
     <div className={`flex items-end gap-[3px] ${className}`}>
@@ -153,7 +117,6 @@ function Onda({ alturas, className = "" }: { alturas: number[]; className?: stri
   );
 }
 
-/* brilho de quatro pontas */
 function Brilho({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 40 40" fill="none" className={className}>
@@ -167,7 +130,6 @@ function Brilho({ className = "" }: { className?: string }) {
   );
 }
 
-/* microfone — bem apagado, só para dar o tema da seção */
 function Microfone({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 120 200" fill="none" className={className}>
@@ -187,12 +149,7 @@ function Microfone({ className = "" }: { className?: string }) {
         strokeLinecap="round"
       />
       <path d="M60 110v34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-      <path
-        d="M40 168h40"
-        stroke="currentColor"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
+      <path d="M40 168h40" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
       <path
         d="M50 46h20M50 60h20M50 74h20"
         stroke="currentColor"
@@ -203,34 +160,24 @@ function Microfone({ className = "" }: { className?: string }) {
   );
 }
 
-/* ============ FUNDO DECORATIVO DA SEÇÃO ============
-   Verde liso (#909677), como no print — sem manchas de cor.
-   Os desenhos (anéis, moldura, pontinhos, ondas, microfone e brilhos)
-   ficam em creme (#F7EEE4) bem apagado, o mesmo creme dos cartões e das
-   bolinhas do print.
-==================================================== */
 function PodcastBackdrop() {
   return (
     <div
       aria-hidden="true"
       className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
     >
-      {/* anéis concêntricos — traço creme */}
       <div className="absolute -left-10 top-[12%] h-[13rem] w-[13rem] rounded-full border border-[#F7EEE4]/15" />
       <div className="absolute -left-2 top-[19%] h-[8rem] w-[8rem] rounded-full border border-[#F7EEE4]/20" />
       <div className="absolute -right-14 bottom-[10%] h-[16rem] w-[16rem] rounded-full border border-[#F7EEE4]/15" />
       <div className="absolute right-[2%] bottom-[18%] h-[10rem] w-[10rem] rounded-full border border-[#F7EEE4]/20" />
 
-      {/* moldura de "post" inclinada, como no Instagram */}
       <div className="absolute -right-10 top-[8%] h-[13rem] w-[13rem] rotate-[10deg] rounded-[2.5rem] border border-[#F7EEE4]/15" />
       <div className="absolute -right-2 top-[13%] h-[9rem] w-[9rem] rotate-[10deg] rounded-[2rem] border border-[#F7EEE4]/20" />
 
-      {/* grade de pontinhos nas laterais — creme, quase invisível */}
       <div
         className="absolute inset-y-0 right-0 w-40 opacity-40"
         style={{
-          backgroundImage:
-            "radial-gradient(rgba(247,238,228,0.3) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(rgba(247,238,228,0.3) 1px, transparent 1px)",
           backgroundSize: "14px 14px",
           maskImage: "linear-gradient(to left, black, transparent)",
           WebkitMaskImage: "linear-gradient(to left, black, transparent)",
@@ -239,27 +186,79 @@ function PodcastBackdrop() {
       <div
         className="absolute inset-y-0 left-0 w-40 opacity-40"
         style={{
-          backgroundImage:
-            "radial-gradient(rgba(247,238,228,0.3) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(rgba(247,238,228,0.3) 1px, transparent 1px)",
           backgroundSize: "14px 14px",
           maskImage: "linear-gradient(to right, black, transparent)",
           WebkitMaskImage: "linear-gradient(to right, black, transparent)",
         }}
       />
 
-      {/* barrinhas de áudio (waveform) — quase invisíveis nas telas em que
-          passariam por trás do texto; aparecem de verdade nas telas largas */}
       <Onda alturas={ONDA_A} className="absolute left-[4%] top-[26%] opacity-20 xl:opacity-70" />
       <Onda alturas={ONDA_B} className="absolute right-[7%] top-[62%] opacity-20 lg:opacity-60" />
 
-      {/* microfone apagado */}
       <Microfone className="absolute -bottom-6 left-[2%] hidden w-[7rem] text-[#F7EEE4] opacity-[0.16] xl:block" />
       <Microfone className="absolute -top-10 right-[10%] hidden w-[6rem] -scale-x-100 rotate-12 text-[#F7EEE4] opacity-[0.14] lg:block" />
 
-      {/* brilhos de quatro pontas */}
       <Brilho className="absolute right-[16%] top-[18%] h-6 w-6 text-[#F7EEE4] opacity-30" />
       <Brilho className="absolute bottom-[22%] left-[13%] h-4 w-4 text-[#F7EEE4] opacity-25" />
       <Brilho className="absolute left-[46%] top-[8%] h-3 w-3 text-[#F7EEE4] opacity-25" />
+    </div>
+  );
+}
+
+/* Capa personalizada; o player só é carregado após o clique. */
+function PodcastVideo() {
+  const [reproduzindo, setReproduzindo] = useState(false);
+
+  return (
+    <div className="mx-auto w-full max-w-3xl">
+      <div className="relative aspect-video overflow-hidden rounded-[10px] bg-ink shadow-[0_10px_30px_rgba(37,39,34,0.25)]">
+        {reproduzindo ? (
+          <iframe
+            src={`https://www.youtube.com/embed/${PODCAST_VIDEO_ID}?autoplay=1&rel=0`}
+            title="Em Boa Companhia — vídeo do podcast"
+            className="absolute inset-0 h-full w-full border-0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
+        ) : (
+          <button
+            type="button"
+            onClick={() => setReproduzindo(true)}
+            aria-label="Reproduzir vídeo do podcast Em Boa Companhia"
+            className="group absolute inset-0 block h-full w-full cursor-pointer overflow-hidden focus-visible:outline focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-[#F7EEE4]"
+          >
+            <img
+              src={PODCAST_VIDEO_THUMB}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              className="h-full w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.03]"
+            />
+
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 bg-black/10 transition-colors duration-300 group-hover:bg-black/20"
+            />
+
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 flex items-center justify-center"
+            >
+              <span className="flex h-16 w-16 items-center justify-center rounded-full bg-[#F7EEE4] text-ink shadow-lg transition-colors duration-300 group-hover:bg-ink group-hover:text-[#F7EEE4] sm:h-20 sm:w-20">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="ml-1 h-7 w-7 sm:h-9 sm:w-9"
+                >
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </span>
+            </span>
+          </button>
+        )}
+      </div>
     </div>
   );
 }
@@ -273,11 +272,7 @@ export default function Podcast() {
       <PodcastBackdrop />
 
       <div className="relative z-10 mx-auto w-[calc(100%-2.5rem)] max-w-5xl py-16 sm:py-20 lg:w-[calc(100%-4rem)] lg:py-24">
-        {/* cabeçalho alinhado à esquerda, igual às outras seções */}
         <div className="max-w-3xl text-left">
-          {/* eyebrow — mesmo padrão de Palestras; tracejado e texto em ink.
-              A cor fica no pai e o eyebrow herda por style, que vence a cor
-              própria da classe .eyebrow */}
           <div className="mb-3 flex items-center gap-3 text-ink">
             <span className="h-px w-8 bg-current" />
             <span className="eyebrow" style={{ color: "inherit" }}>Podcast</span>
@@ -285,16 +280,12 @@ export default function Podcast() {
 
           <Reveal delay={80}>
             <h2 className="font-cinzel text-3xl leading-[1.15] tracking-tight text-ink sm:text-4xl">
-              Em Boa{" "}
-              {/* sem cor de destaque: título todo em ink, como no print */}
-              <span>Companhia</span>
+              Em Boa <span>Companhia</span>
             </h2>
           </Reveal>
         </div>
 
-        {/* o texto em três cartões pequenos, no estilo dos cartões da seção
-            "Nosso diferencial": selo escuro com ícone + texto.
-            MOBILE: um embaixo do outro | TABLET: 2 + 1 | DESKTOP: 3 lado a lado */}
+        {/* Cards: um por linha no mobile, 2 + 1 no tablet e três no desktop. */}
         <div className="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-[1fr_1fr_1.4fr]">
           <Reveal delay={140} className="h-full">
             <Cartao icone={<CoffeeIcon className="h-[18px] w-[18px]" />}>
@@ -324,13 +315,14 @@ export default function Podcast() {
           </Reveal>
         </div>
 
-        {/* botões — Spotify (ink com letra creme) e YouTube (creme com letra ink);
-            no hover, cada um troca para as cores do outro.
-            No mobile ficam empilhados e CENTRALIZADOS (~80% da largura);
-            do sm para cima ficam lado a lado, à esquerda.
-            Altura mínima de 44px. */}
+        {/* Vídeo centralizado abaixo dos cards, com a capa doutorarenata.png. */}
+        <Reveal delay={300} className="mt-8 sm:mt-10">
+          <PodcastVideo />
+        </Reveal>
+
+        {/* Botões centralizados abaixo do vídeo em todas as telas. */}
         <Reveal delay={320}>
-          <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row sm:items-center sm:justify-start">
+          <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
               href={PODCAST_SPOTIFY}
               target="_blank"

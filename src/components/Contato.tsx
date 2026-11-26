@@ -26,15 +26,24 @@ export default function Contato() {
 
       <Reveal className="relative z-10 mx-auto w-full max-w-[1040px]">
         <div className="relative overflow-hidden rounded-[1.8rem] bg-cream/95 shadow-[0_28px_80px_rgba(6,18,14,0.34)] ring-1 ring-white/20 backdrop-blur-[2px]">
-          {/* Foto no topo do cartão (contato.jpg) — imagem inteira, com moldura */}
+          {/* Fotos centralizadas com dimensões iguais, sem bordas ou molduras.
+              object-cover preenche os dois espaços com recorte proporcional. */}
           <div className="p-3 sm:p-4">
-            <div className="w-full overflow-hidden rounded-[1.05rem] border border-[#E69B97]/50 bg-cream p-1.5 shadow-[0_12px_32px_rgba(6,18,14,0.16)] lg:mx-auto lg:max-w-[420px]">
+            <div className="mx-auto grid w-full max-w-[864px] grid-cols-2 items-center gap-3 sm:gap-4">
               <img
                 src="/contato.jpg"
                 alt="Renata Rodrigues de Souza"
                 loading="lazy"
                 decoding="async"
-                className="block h-auto w-full rounded-[0.7rem]"
+                className="block aspect-[4/5] w-full min-w-0 rounded-[0.7rem] object-cover object-center"
+              />
+
+              <img
+                src="/doutorarenata2.png"
+                alt="Renata Rodrigues de Souza — segunda foto"
+                loading="lazy"
+                decoding="async"
+                className="block aspect-[4/5] w-full min-w-0 rounded-[0.7rem] object-cover object-center"
               />
             </div>
           </div>
@@ -50,7 +59,6 @@ export default function Contato() {
               <div className="relative z-10">
                 <div className="mb-4 flex items-center gap-3">
                   <span className="h-px w-8 bg-[#E69B97]" />
-                  {/* cor sólida #E69B97 (era o marrom/degradê text-brand-dark) */}
                   <span className="eyebrow" style={{ color: "#E69B97" }}>
                     Entre em contato
                   </span>
@@ -58,7 +66,6 @@ export default function Contato() {
 
                 <h2 className="font-cinzel text-[1.7rem] leading-[1.15] tracking-tight text-[#173c36] sm:text-[2rem]">
                   Uma gestão escolar mais{" "}
-                  {/* cor sólida #E69B97 (era text-brand-dark) */}
                   <span style={{ color: "#E69B97" }}>segura</span> começa aqui.
                 </h2>
 

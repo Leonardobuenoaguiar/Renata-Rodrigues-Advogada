@@ -4,12 +4,7 @@ import Reveal from "./Reveal";
 import { site } from "../data/site";
 import { ArrowRight } from "./icons";
 
-/* Paleta do Fair Play 360º — azul-marinho + vermelho em tons pastel (sem rosé)
-   NAVY       #34446B → fundo da seção, títulos do modal e blocos escuros
-   RED        #C0504D → destaques sobre fundo claro: etiquetas, marcadores, números e botão
-   RED_BRIGHT #E4716C → o mesmo vermelho, um pouco mais claro, para aparecer bem
-                        em cima do azul-marinho ("360º", tracejados e anel)
-   Nas classes, as mesmas cores aparecem como bg-[#34446B], text-[#C0504D] etc. */
+/* Paleta do Fair Play 360º */
 const NAVY = "#34446B";
 const RED = "#C0504D";
 const RED_BRIGHT = "#E4716C";
@@ -17,11 +12,14 @@ const RED_BRIGHT = "#E4716C";
 function FairPlayModal({ open, onClose }) {
   useEffect(() => {
     if (!open) return;
+
     const onKey = (e) => {
       if (e.key === "Escape") onClose();
     };
+
     window.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
+
     return () => {
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
@@ -36,16 +34,16 @@ function FairPlayModal({ open, onClose }) {
       aria-modal="true"
       role="dialog"
     >
-      {/* overlay */}
+      {/* Overlay */}
       <button
         aria-label="Fechar modal"
         onClick={onClose}
         className="absolute inset-0 bg-[#252722]/60 backdrop-blur-sm"
       />
 
-      {/* container */}
+      {/* Container */}
       <div className="relative flex max-h-[90vh] w-full max-w-[780px] flex-col overflow-hidden rounded-[2rem] border border-[#34446B]/15 bg-cream shadow-[0_24px_60px_rgba(37,39,34,0.28)]">
-        {/* header sticky */}
+        {/* Cabeçalho */}
         <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-[#34446B]/10 bg-cream px-6 py-5 sm:px-8 sm:py-6">
           <div>
             <p
@@ -54,31 +52,46 @@ function FairPlayModal({ open, onClose }) {
             >
               Programa completo
             </p>
+
             <h3 className="mt-1.5 font-cinzel text-xl leading-tight text-[#34446B] sm:text-2xl">
               Fair Play 360º
             </h3>
+
             <p className="mt-1 text-sm font-medium text-ink-soft">
               Integridade, proteção e cultura de paz no esporte
             </p>
           </div>
+
           <button
             onClick={onClose}
             aria-label="Fechar"
             className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#34446B]/20 bg-white text-[#34446B] transition-colors hover:bg-[#34446B] hover:text-white"
           >
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M1 1L13 13M13 1L1 13"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+              />
             </svg>
           </button>
         </div>
 
-        {/* scroll content */}
+        {/* Conteúdo com rolagem */}
         <div className="overflow-y-auto px-6 py-6 sm:px-8 sm:py-7 [scrollbar-width:thin]">
           {/* O que aborda */}
           <div>
             <h4 className="font-cinzel text-lg leading-tight text-[#34446B]">
               O que o programa aborda?
             </h4>
+
             <ul className="mt-4 grid gap-3">
               {[
                 "Prevenção à violência, bullying e cyberbullying;",
@@ -89,7 +102,10 @@ function FairPlayModal({ open, onClose }) {
                 "Segurança digital e orientação às famílias;",
                 "Criação de canais de escuta e procedimentos para apuração de ocorrências.",
               ].map((item) => (
-                <li key={item} className="flex gap-3 text-sm leading-relaxed text-ink">
+                <li
+                  key={item}
+                  className="flex gap-3 text-sm leading-relaxed text-ink"
+                >
                   <span
                     className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
                     style={{ background: RED }}
@@ -106,6 +122,7 @@ function FairPlayModal({ open, onClose }) {
             <h4 className="font-cinzel text-lg leading-tight text-[#34446B]">
               Os 8 pilares do programa
             </h4>
+
             <ol className="mt-4 grid gap-3 sm:grid-cols-2">
               {[
                 "Governança e diagnóstico de riscos",
@@ -127,6 +144,7 @@ function FairPlayModal({ open, onClose }) {
                   >
                     {idx + 1}
                   </span>
+
                   <span className="pt-0.5 font-medium">{pilar}</span>
                 </li>
               ))}
@@ -135,15 +153,28 @@ function FairPlayModal({ open, onClose }) {
 
           {/* Como funciona */}
           <div className="mt-8">
-            <h4 className="font-cinzel text-lg leading-tight text-[#34446B]">Como funciona?</h4>
+            <h4 className="font-cinzel text-lg leading-tight text-[#34446B]">
+              Como funciona?
+            </h4>
+
             <p className="mt-3 text-sm leading-[1.8] text-ink-soft">
-              O programa envolve diagnóstico institucional, mapeamento de riscos, elaboração de políticas e protocolos, capacitação, ações educativas, simulações e monitoramento contínuo.
+              O programa envolve diagnóstico institucional, mapeamento de
+              riscos, elaboração de políticas e protocolos, capacitação,
+              ações educativas, simulações e monitoramento contínuo.
             </p>
+
             <p className="mt-3 text-sm leading-[1.8] text-ink-soft">
-              Conforme os serviços contratados, podem ser desenvolvidos códigos de conduta, políticas de proteção, protocolos de denúncia e apuração, relatórios de conformidade e planos de ação.
+              Conforme os serviços contratados, podem ser desenvolvidos
+              códigos de conduta, políticas de proteção, protocolos de
+              denúncia e apuração, relatórios de conformidade e planos de
+              ação.
             </p>
+
             <p className="mt-3 text-sm leading-[1.8] text-ink-soft">
-              A atuação considera a legislação aplicável, incluindo a Lei Geral do Esporte, o Estatuto da Criança e do Adolescente, as normas de combate ao racismo e ao bullying e a Lei Geral de Proteção de Dados (LGPD).
+              A atuação considera a legislação aplicável, incluindo a Lei
+              Geral do Esporte, o Estatuto da Criança e do Adolescente, as
+              normas de combate ao racismo e ao bullying e a Lei Geral de
+              Proteção de Dados (LGPD).
             </p>
           </div>
 
@@ -152,15 +183,26 @@ function FairPlayModal({ open, onClose }) {
             <h4 className="font-cinzel text-lg leading-tight text-[#34446B]">
               Por que escolher o Fair Play 360º?
             </h4>
+
             <p className="mt-3 text-sm leading-[1.8] text-ink-soft">
-              O diferencial está na <strong className="font-semibold text-ink">prevenção, e não apenas na reação às crises</strong>. O programa auxilia organizações esportivas a identificar vulnerabilidades, definir responsabilidades, padronizar procedimentos, registrar decisões e fortalecer a proteção dos envolvidos.
+              O diferencial está na{" "}
+              <strong className="font-semibold text-ink">
+                prevenção, e não apenas na reação às crises
+              </strong>
+              . O programa auxilia organizações esportivas a identificar
+              vulnerabilidades, definir responsabilidades, padronizar
+              procedimentos, registrar decisões e fortalecer a proteção dos
+              envolvidos.
             </p>
+
             <div className="mt-5 rounded-2xl bg-[#34446B] px-5 py-4 text-center">
               <p className="text-sm font-semibold leading-relaxed text-paper">
                 Proteja pessoas. Fortaleça sua instituição.
               </p>
+
               <p className="mt-2 text-sm italic leading-relaxed text-paper/80">
-                Fair Play não é apenas uma regra do jogo. É uma cultura que precisa existir dentro e fora de campo.
+                Fair Play não é apenas uma regra do jogo. É uma cultura que
+                precisa existir dentro e fora de campo.
               </p>
             </div>
           </div>
@@ -170,6 +212,7 @@ function FairPlayModal({ open, onClose }) {
             <p className="text-sm font-medium text-ink">
               Quer implementar na sua instituição?
             </p>
+
             <a
               href={site.whatsapp}
               target="_blank"
@@ -196,27 +239,32 @@ export default function Resultados() {
         tone="cream"
         className="relative isolate overflow-hidden py-10 lg:py-14"
       >
-        {/* backdrop: fundo azul-marinho da seção + formas suaves */}
+        {/* Fundo azul-marinho e formas suaves */}
         <div
           className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
           style={{ backgroundColor: NAVY }}
           aria-hidden="true"
         >
           <div className="absolute -right-48 top-[-6rem] h-[36rem] w-[36rem] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.07)_0%,rgba(255,255,255,0.02)_45%,transparent_72%)] blur-2xl" />
+
           <div className="absolute -left-56 bottom-[-10rem] h-[38rem] w-[38rem] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.05)_0%,rgba(255,255,255,0.015)_46%,transparent_72%)] blur-2xl" />
+
           <div className="absolute -right-32 top-[14%] hidden h-[26rem] w-[26rem] rounded-full border border-white/10 lg:block" />
+
           <div className="absolute -right-16 top-[20%] hidden h-[18rem] w-[18rem] rounded-full border border-[#E4716C]/50 lg:block" />
         </div>
 
         <div className="relative z-10">
-          {/* Tag + Título */}
+          {/* Tag e título */}
           <div className="mx-auto max-w-5xl">
             <Reveal>
               <div className="mb-3 flex items-center justify-center gap-3 lg:justify-start">
                 <span className="h-px w-8 bg-[#E4716C]" />
+
                 <span className="eyebrow" style={{ color: "#FFFFFF" }}>
                   Programa exclusivo
                 </span>
+
                 <span className="h-px w-8 bg-[#E4716C] lg:hidden" />
               </div>
             </Reveal>
@@ -225,9 +273,8 @@ export default function Resultados() {
               <h2 className="text-center font-cinzel text-[32px] font-normal leading-none tracking-tight text-white sm:text-[42px] lg:text-left lg:text-[44px]">
                 FAIR PLAY <span style={{ color: RED_BRIGHT }}>360º</span>
               </h2>
-              <p
-                className="mt-3 text-center text-xs font-semibold uppercase tracking-[0.18em] text-white/80 sm:text-sm lg:text-left"
-              >
+
+              <p className="mt-3 text-center text-xs font-semibold uppercase tracking-[0.18em] text-white/80 sm:text-sm lg:text-left">
                 Integridade, proteção e cultura de paz no esporte
               </p>
             </Reveal>
@@ -236,22 +283,36 @@ export default function Resultados() {
           {/* Card principal */}
           <Reveal delay={140}>
             <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-[2rem] border border-white/10 bg-white shadow-[0_12px_32px_rgba(37,39,34,0.07)] lg:grid lg:grid-cols-[1.15fr_0.85fr]">
-              {/* Esquerda - texto */}
+              {/* Esquerda: texto */}
               <div className="p-6 sm:p-8 lg:p-9">
-                <p className="text-[13px] font-semibold uppercase tracking-[0.14em]" style={{ color: RED }}>
+                <p
+                  className="text-[13px] font-semibold uppercase tracking-[0.14em]"
+                  style={{ color: RED }}
+                >
                   Renata Souza Consultoria Jurídica e Auditoria
                 </p>
 
                 <p className="mt-4 text-base leading-[1.8] text-ink-soft">
-                  O <strong className="font-semibold text-ink">Fair Play 360º</strong>, desenvolvido pela Renata Souza Consultoria Jurídica e Auditoria, é um programa de consultoria preventiva voltado à gestão de riscos jurídicos, prevenção da violência, combate ao racismo e à injúria racial e proteção de crianças e adolescentes no ambiente esportivo.
+                  O{" "}
+                  <strong className="font-semibold text-ink">
+                    Fair Play 360º
+                  </strong>
+                  , desenvolvido pela Renata Souza Consultoria Jurídica e
+                  Auditoria, é um programa de consultoria preventiva voltado
+                  à gestão de riscos jurídicos, prevenção da violência,
+                  combate ao racismo e à injúria racial e proteção de
+                  crianças e adolescentes no ambiente esportivo.
                 </p>
 
                 <p className="mt-4 text-base leading-[1.8] text-ink-soft">
                   Destinado a{" "}
                   <strong className="font-semibold text-ink">
-                    clubes, SAFs, escolinhas, associações esportivas, academias e projetos sociais
+                    clubes, SAFs, escolinhas, associações esportivas,
+                    academias e projetos sociais
                   </strong>
-                  , o programa promove ambientes mais seguros por meio de políticas institucionais, protocolos de atuação e capacitação.
+                  , o programa promove ambientes mais seguros por meio de
+                  políticas institucionais, protocolos de atuação e
+                  capacitação.
                 </p>
 
                 <button
@@ -263,16 +324,21 @@ export default function Resultados() {
                 </button>
               </div>
 
-              {/* Direita - visual / pilares preview */}
+              {/* Direita: prévia dos pilares */}
               <div className="relative flex flex-col justify-between overflow-hidden bg-[#34446B]/[0.05] p-6 sm:p-8 lg:p-7">
                 <span
                   aria-hidden="true"
                   className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[#34446B]/10"
                 />
+
                 <div className="relative">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: NAVY }}>
+                  <p
+                    className="text-xs font-semibold uppercase tracking-[0.16em]"
+                    style={{ color: NAVY }}
+                  >
                     8 pilares
                   </p>
+
                   <ul className="mt-4 grid gap-2.5">
                     {[
                       "Governança e diagnóstico de riscos",
@@ -280,35 +346,60 @@ export default function Resultados() {
                       "Enfrentamento ao racismo",
                       "Protocolos e canal seguro de escuta",
                     ].map((item) => (
-                      <li key={item} className="flex items-center gap-3 text-sm text-ink">
+                      <li
+                        key={item}
+                        className="flex items-center gap-3 text-sm text-ink"
+                      >
                         <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white text-[10px] font-bold text-[#C0504D] shadow-sm">
                           ✓
                         </span>
                         {item}
                       </li>
                     ))}
-                    <li className="pl-1 text-xs font-medium italic text-ink-soft">+ 4 pilares no programa completo</li>
+
+                    <li className="pl-1 text-xs font-medium italic text-ink-soft">
+                      + 4 pilares no programa completo
+                    </li>
                   </ul>
                 </div>
 
-                <div className="relative mt-6 rounded-2xl bg-[#34446B] px-5 py-4">
-                  <p className="text-sm font-medium leading-snug text-paper">Prevenção, e não só reação à crise.</p>
-                  <p className="mt-1 text-xs leading-relaxed text-paper/70">Vulnerabilidades mapeadas, procedimentos padronizados.</p>
+                <div className="relative mt-6">
+                  {/* Imagem na área clara, sem filtro ou camada colorida */}
+                  <img
+                    src="/fairplay360.png"
+                    alt="Fair Play 360º"
+                    className="mb-4 h-20 w-auto object-contain"
+                  />
+
+                  {/* Quadrado azul */}
+                  <div className="rounded-2xl bg-[#34446B] px-5 py-4">
+                    <p className="text-sm font-medium leading-snug text-paper">
+                      Prevenção, e não só reação à crise.
+                    </p>
+
+                    <p className="mt-1 text-xs leading-relaxed text-paper/70">
+                      Vulnerabilidades mapeadas, procedimentos padronizados.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </Reveal>
 
-          {/* selo inferior */}
+          {/* Selo inferior */}
           <Reveal delay={200}>
             <p className="mx-auto mt-6 max-w-5xl text-center text-xs leading-relaxed text-white/70 lg:text-left">
-              Baseado na Lei Geral do Esporte, ECA, normas de combate ao racismo e bullying e LGPD.
+              Baseado na Lei Geral do Esporte, ECA, normas de combate ao
+              racismo e bullying e LGPD.
             </p>
           </Reveal>
         </div>
       </Section>
 
-      <FairPlayModal open={isOpen} onClose={() => setIsOpen(false)} />
+      <FairPlayModal
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+      />
     </>
   );
 }
